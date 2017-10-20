@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="navigation_news"
+        android:enabled="true"
+        android:icon="@drawable/ic_news"
+        android:title="@string/nav_news_title"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="navigation_profile"
+        android:enabled="true"
+        android:icon="@drawable/ic_person"
+        android:title="@string/nav_profile_title"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="navigation_rating"
+        android:enabled="true"
+        android:icon="@drawable/ic_rating"
+        android:title="@string/nav_rating_title"
+        app:showAsAction="ifRoom"/>
+
+</menu>

@@ -1,0 +1,20 @@
+package ru.doubletapp.android.izjuminka.presenter;
+
+import android.support.annotation.NonNull;
+
+import dagger.Module;
+import dagger.Provides;
+import ru.doubletapp.android.izjuminka.presenter.profile.ProfilePresenter;
+
+/**
+ * Created by hash on 20/10/2017.
+ */
+
+@Module
+public class PresentersModule {
+    @NonNull
+    @Provides
+    ProfilePresenter provideProfilePresenter() {
+        return new ProfilePresenter();
+    }
+}

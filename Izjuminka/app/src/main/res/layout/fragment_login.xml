@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center_vertical"
+              android:orientation="vertical">
+
+    <Button
+        android:id="@+id/login_vk_btn"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/spacing_18"
+        android:background="@color/vk_color"
+        android:paddingLeft="@dimen/spacing_18"
+        android:paddingRight="@dimen/spacing_18"
+        android:text="@string/login_vk_text"
+        android:textColor="@android:color/white"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="12dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/or"/>
+
+    <Button
+        android:id="@+id/login_anon_btn"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@android:color/darker_gray"
+        android:paddingLeft="@dimen/spacing_18"
+        android:textColor="@android:color/white"
+        android:paddingRight="@dimen/spacing_18"
+        android:text="@string/login_anonim_text"/>
+</LinearLayout>

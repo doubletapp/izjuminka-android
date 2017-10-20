@@ -1,6 +1,10 @@
 <resources>
-    <string name="app_name">Izjuminka</string>
+    <string name="app_name" translatable="false">Izjuminka</string>
+    <integer name="com_vk_sdk_AppId">6227710</integer>
     <string name="nav_news_title" translatable="true">News</string>
     <string name="nav_profile_title" translatable="true">Profile</string>
     <string name="nav_rating_title" translatable="true">Rating</string>
+    <string name="login_vk_text">Login with VK</string>
+    <string name="or">or</string>
+    <string name="login_anonim_text">Login anonimus</string>
 </resources>

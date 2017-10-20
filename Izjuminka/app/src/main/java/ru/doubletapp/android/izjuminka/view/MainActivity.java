@@ -1,14 +1,17 @@
 package ru.doubletapp.android.izjuminka.view;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-
-import com.vk.sdk.util.VKUtil;
 
 import ru.doubletapp.android.izjuminka.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
+
+    public static Intent createStartIntent(Context fromContext) {
+        return new Intent(fromContext, MainActivity.class);
+    }
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
@@ -16,8 +19,5 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        String[] fingerprints = VKUtil.getCertificateFingerprint(this, this.getPackageName());
-        Log.d(TAG, "onCreate: " + fingerprints);
     }
 }

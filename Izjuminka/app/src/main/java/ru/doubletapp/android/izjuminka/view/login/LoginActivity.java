@@ -1,5 +1,6 @@
 package ru.doubletapp.android.izjuminka.view.login;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -9,11 +10,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ru.doubletapp.android.izjuminka.R;
 import ru.doubletapp.android.izjuminka.utils.ActivityUtils;
 import ru.doubletapp.android.izjuminka.view.BaseActivity;
+import ru.doubletapp.android.izjuminka.view.SplashActivity;
 
 /**
  * Created by Denis Akimov on 20.10.2017.
@@ -25,6 +29,10 @@ public class LoginActivity extends BaseActivity {
     Toolbar toolbar;
     @BindView(R.id.login_content_container)
     FrameLayout container;
+
+    public static Intent createStartIntent(Context fromContext) {
+        return new Intent(fromContext, LoginActivity.class);
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {

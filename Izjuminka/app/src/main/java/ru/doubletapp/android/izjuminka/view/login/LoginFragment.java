@@ -21,6 +21,15 @@ import ru.doubletapp.android.izjuminka.view.BaseFragment;
 
 public class LoginFragment extends BaseFragment<LoginPresenter> {
 
+    public static LoginFragment newInstance() {
+
+        Bundle args = new Bundle();
+
+        LoginFragment fragment = new LoginFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Nullable
     @Override
     protected LoginPresenter createPresenter() {
@@ -59,6 +68,11 @@ public class LoginFragment extends BaseFragment<LoginPresenter> {
     @OnClick(R.id.login_vk_btn)
     public void onVkLoginClick() {
         mPresenter.onVkLoginClick();
+    }
+
+    @OnClick(R.id.login_anon_btn)
+    public void onAnonLoginClick() {
+        mPresenter.onAnonLoginClick();
     }
 
 }

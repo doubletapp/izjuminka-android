@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import butterknife.Unbinder;
 import ru.doubletapp.android.izjuminka.presenter.BasePresenter;
@@ -46,5 +47,9 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
         if (mPresenter != null) {
             mPresenter.detachView();
         }
+    }
+
+    public void showError(String message) {
+        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
 }

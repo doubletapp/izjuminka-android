@@ -15,21 +15,17 @@
             android:name="com.vk.sdk.VKServiceActivity"
             android:label="ServiceActivity"
             android:theme="@style/VK.Transparent"/>
-        <activity android:name=".view.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-            </intent-filter>
-        </activity>
+        <activity android:name=".view.MainActivity"/>
         <activity
             android:name=".view.login.LoginActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".view.SplashActivity">
             <intent-filter>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN"/>
 
             </intent-filter>
-
         </activity>
     </application>
 

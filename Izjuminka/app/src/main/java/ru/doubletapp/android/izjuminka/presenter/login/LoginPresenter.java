@@ -42,6 +42,7 @@ public class LoginPresenter extends BasePresenter<LoginFragment> {
                 mData.setUserId(res.userId);
                 mData.setToken(res.accessToken);
                 mData.setEmail(res.email);
+                mView.openNextScreen();
             }
 
             @Override

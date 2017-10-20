@@ -1,10 +1,10 @@
 package ru.doubletapp.android.izjuminka.view;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
-import android.support.v4.text.TextUtilsCompat;
-import android.text.TextUtils;
+import android.util.Log;
+
+import com.vk.sdk.util.VKUtil;
 
 import javax.inject.Inject;
 
@@ -35,7 +35,6 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
         init();
     }
 

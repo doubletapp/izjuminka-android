@@ -1,5 +1,6 @@
 package ru.doubletapp.android.izjuminka.view;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 
 import butterknife.Unbinder;
 import icepick.Icepick;
+import ru.doubletapp.android.izjuminka.callbacks.BaseCallback;
 import ru.doubletapp.android.izjuminka.presenter.BasePresenter;
 
 /**
@@ -19,9 +21,20 @@ import ru.doubletapp.android.izjuminka.presenter.BasePresenter;
 public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
 
     protected T mPresenter;
+    public BaseCallback baseCallback;
 
     @Nullable
     protected Unbinder mUnbinder;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            baseCallback = (BaseCallback) context;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

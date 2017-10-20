@@ -59,6 +59,7 @@ public class LoginFragment extends BaseFragment<LoginPresenter> {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mPresenter.attachView(this, savedInstanceState);
+        baseCallback.setTitle(getString(R.string.login_title));
     }
 
     @Override

@@ -24,6 +24,6 @@ public class BaseActivity extends AppCompatActivity implements BaseCallback {
 
     @Override
     public void setTitle(String title) {
-        
+
     }
 }

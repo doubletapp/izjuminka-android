@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nav_news_title">Новости</string>
+    <string name="nav_profile_title">Профиль</string>
+    <string name="nav_rating_title">Рейтинг</string>
+</resources>

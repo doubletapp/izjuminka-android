@@ -8,7 +8,6 @@ import android.support.v4.view.ViewPager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import butterknife.BindView;
 import ru.doubletapp.android.izjuminka.R;
@@ -31,7 +30,8 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mViewPager.setAdapter(new TabPagerAdapter(getSupportFragmentManager()));
+        mPagerAdapter = new TabPagerAdapter(getSupportFragmentManager());
+        mViewPager.setAdapter(mPagerAdapter);
     }
 
     private class TabPagerAdapter extends FragmentStatePagerAdapter {

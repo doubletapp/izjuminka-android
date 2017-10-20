@@ -6,6 +6,7 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import ru.doubletapp.android.izjuminka.presenter.PresentersModule;
+import ru.doubletapp.android.izjuminka.presenter.login.LoginInfoPresenter;
 import ru.doubletapp.android.izjuminka.presenter.profile.ProfilePresenter;
 import ru.doubletapp.android.izjuminka.storage.StorageModule;
 import ru.doubletapp.android.izjuminka.view.SplashActivity;
@@ -36,4 +37,9 @@ public interface ApplicationComponent {
     void inject(LoginPresenter presenter);
 
     void inject(SplashActivity activity);
+
+    @NonNull
+    LoginInfoPresenter getLoginInfoPresenter();
+
+    void inject(LoginInfoPresenter presenter);
 }

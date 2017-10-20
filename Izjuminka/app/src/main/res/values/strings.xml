@@ -9,4 +9,11 @@
     <string name="login_anonim_text">Login anonimus</string>
     <string name="login_title">Login</string>
     <string name="next">Next</string>
+    <string name="email_hint">Enter your email</string>
+    <string name="phone_hint">Enter your phone</string>
+    <string name="login_info_text">Please enter your email and phone number so we can contact you. You can skip this step.</string>
+    <string name="send_email_btn_text">Send info to us</string>
+    <string name="skip">Skip</string>
+    <string name="info_empty_fields">Email and phone must not be empty</string>
+    <string name="info_invalid_phone">Phone is not valid</string>
 </resources>

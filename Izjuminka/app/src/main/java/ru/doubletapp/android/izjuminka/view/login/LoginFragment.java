@@ -3,16 +3,17 @@ package ru.doubletapp.android.izjuminka.view.login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.*;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import ru.doubletapp.android.izjuminka.IzjuminkaApplication;
 import ru.doubletapp.android.izjuminka.R;
+import ru.doubletapp.android.izjuminka.callbacks.LoginActivityCallback;
 import ru.doubletapp.android.izjuminka.presenter.login.LoginPresenter;
 import ru.doubletapp.android.izjuminka.view.BaseFragment;
-import ru.doubletapp.android.izjuminka.view.MainActivity;
 
 /**
  * Created by Denis Akimov on 20.10.2017.
@@ -21,6 +22,8 @@ import ru.doubletapp.android.izjuminka.view.MainActivity;
 public class LoginFragment extends BaseFragment<LoginPresenter> {
 
     public static final String TAG = LoginFragment.class.getSimpleName();
+    @Nullable
+    private LoginActivityCallback callback;
 
     public static LoginFragment newInstance() {
 
@@ -29,6 +32,16 @@ public class LoginFragment extends BaseFragment<LoginPresenter> {
         LoginFragment fragment = new LoginFragment();
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            callback = (LoginActivityCallback) baseCallback;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     @Nullable
@@ -62,12 +75,6 @@ public class LoginFragment extends BaseFragment<LoginPresenter> {
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        MenuItem next = menu.add(getString(R.string.next));
-    }
-
-    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         mPresenter.onActivityResult(requestCode, resultCode, data);
@@ -84,6 +91,6 @@ public class LoginFragment extends BaseFragment<LoginPresenter> {
     }
 
     public void openNextScreen() {
-        getActivity().startActivity(MainActivity.createStartIntent((LoginActivity) getActivity()));
+        if (callback != null) callback.openLoginInfoScreen();
     }
 }

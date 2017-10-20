@@ -1,8 +1,15 @@
 apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.0"
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     defaultConfig {
         applicationId "ru.doubletapp.android.izjuminka"
         minSdkVersion 21
@@ -45,6 +52,7 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.11'
     provided 'frankiesardo:icepick-processor:3.2.0'
+    compile 'com.redmadrobot:inputmask:2.3.0'
 
     testCompile 'junit:junit:4.12'
 }

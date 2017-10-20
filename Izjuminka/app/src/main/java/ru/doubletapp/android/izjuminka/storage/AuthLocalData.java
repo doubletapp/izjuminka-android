@@ -14,6 +14,7 @@ public class AuthLocalData {
     private static final String KEY_TOKEN = "token";
     private static final String KEY_EMAIL = "email";
     private static final String KEY_USER_ID = "user_id";
+    private static final String KEY_PHONE = "phone";
 
     @NonNull
     private final SharedPreferences mPreferences;
@@ -66,5 +67,13 @@ public class AuthLocalData {
 
     public void logout() {
         mPreferences.edit().clear().apply();
+    }
+
+    public void setPhone(String phone) {
+        putString(KEY_PHONE, phone);
+    }
+
+    public String getPhone() {
+        return getString(KEY_PHONE);
     }
 }

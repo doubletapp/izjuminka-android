@@ -8,4 +8,12 @@
     <string name="login_anonim_text">Войти анонимно</string>
     <string name="next">Далее</string>
     <string name="login_title">Вход</string>
+    <string name="phone_hint">Введите Ваш телефон</string>
+    <string name="email_hint">Введите Ваш email</string>
+    <string name="login_info_text">Пожалуйста, введите Ваш email и телефон, чтоб мы могли связаться с вами. Вы можете пропустить этот шаг.</string>
+    <string name="send_email_btn_text">Отправить информацию</string>
+    <string name="skip">Пропустить</string>
+    <string name="info_empty_fields">Поля email и телефон не должны быть пустыми.</string>
+    <string name="app_name" translatable="false"></string>
+    <string name="info_invalid_phone">Введен неверный телефон</string>
 </resources>

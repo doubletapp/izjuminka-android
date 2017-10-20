@@ -35,14 +35,14 @@ public class LoginPresenter extends BasePresenter<LoginFragment> {
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (!VKSdk.onActivityResult(requestCode, resultCode, data, new VKCallback<VKAccessToken>() {
+        VKSdk.onActivityResult(requestCode, resultCode, data, new VKCallback<VKAccessToken>() {
             @Override
             public void onResult(VKAccessToken res) {
                 // Пользователь успешно авторизовался
                 mData.setUserId(res.userId);
                 mData.setToken(res.accessToken);
                 mData.setEmail(res.email);
-                mView.openNextScreen();
+                if (mView != null) mView.openNextScreen();
             }
 
             @Override
@@ -50,7 +50,7 @@ public class LoginPresenter extends BasePresenter<LoginFragment> {
                 // Произошла ошибка авторизации (например, пользователь запретил авторизацию)
                 if (mView != null) mView.showError(error.errorMessage);
             }
-        }));
+        });
     }
 
     public void onVkLoginClick() {

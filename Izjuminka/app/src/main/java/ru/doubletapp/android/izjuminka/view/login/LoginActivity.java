@@ -72,4 +72,9 @@ public class LoginActivity extends BaseActivity {
             getSupportFragmentManager().findFragmentById(container.getId()).onActivityResult(requestCode, resultCode, data);
         }
     }
+
+    @Override
+    public void setTitle(String title) {
+        super.setTitle(title);
+    }
 }

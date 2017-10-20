@@ -6,4 +6,6 @@
     <string name="login_vk_text">Войти через ВКонтакте</string>
     <string name="or">или</string>
     <string name="login_anonim_text">Войти анонимно</string>
+    <string name="next">Далее</string>
+    <string name="login_title">Вход</string>
 </resources>

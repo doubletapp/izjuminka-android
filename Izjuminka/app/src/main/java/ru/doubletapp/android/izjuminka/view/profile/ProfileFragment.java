@@ -18,6 +18,15 @@ import ru.doubletapp.android.izjuminka.view.BaseFragment;
 
 public class ProfileFragment extends BaseFragment<ProfilePresenter> {
 
+    public static ProfileFragment newInstance() {
+
+        Bundle args = new Bundle();
+
+        ProfileFragment fragment = new ProfileFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         IzjuminkaApplication.getApplicationComponent(getContext()).inject(this);

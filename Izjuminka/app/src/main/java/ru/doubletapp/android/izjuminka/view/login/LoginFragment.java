@@ -21,6 +21,8 @@ import ru.doubletapp.android.izjuminka.view.BaseFragment;
 
 public class LoginFragment extends BaseFragment<LoginPresenter> {
 
+    public static final String TAG = LoginFragment.class.getSimpleName();
+
     public static LoginFragment newInstance() {
 
         Bundle args = new Bundle();
@@ -57,6 +59,7 @@ public class LoginFragment extends BaseFragment<LoginPresenter> {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mPresenter.attachView(this, savedInstanceState);
+        baseCallback.setTitle(getString(R.string.login_title));
     }
 
     @Override

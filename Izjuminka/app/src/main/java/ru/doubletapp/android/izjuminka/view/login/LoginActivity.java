@@ -35,8 +35,8 @@ public class LoginActivity extends BaseActivity {
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
         mUnbinder = ButterKnife.bind(this);
@@ -51,6 +51,9 @@ public class LoginActivity extends BaseActivity {
         if (actionBar != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+
+        ActivityUtils.replaceFragment(getSupportFragmentManager(), container.getId(),
+                LoginFragment.newInstance(), LoginFragment.TAG, true, null);
     }
 
     @Override

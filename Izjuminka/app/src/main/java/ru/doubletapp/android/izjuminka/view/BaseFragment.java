@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import butterknife.Unbinder;
+import icepick.Icepick;
 import ru.doubletapp.android.izjuminka.presenter.BasePresenter;
 
 /**
@@ -25,6 +26,8 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Icepick.restoreInstanceState(this, savedInstanceState);
+        mPresenter = createPresenter();
     }
 
     @Nullable

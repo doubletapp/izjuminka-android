@@ -3,12 +3,15 @@ package ru.doubletapp.android.izjuminka.view;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
+import android.support.v4.text.TextUtilsCompat;
+import android.text.TextUtils;
 
 import javax.inject.Inject;
 
 import ru.doubletapp.android.izjuminka.IzjuminkaApplication;
 import ru.doubletapp.android.izjuminka.R;
 import ru.doubletapp.android.izjuminka.storage.AuthLocalData;
+import ru.doubletapp.android.izjuminka.utils.StringUtils;
 import ru.doubletapp.android.izjuminka.view.login.LoginActivity;
 
 /**
@@ -27,12 +30,17 @@ public class SplashActivity extends BaseActivity {
         setContentView(R.layout.activity_splash);
         IzjuminkaApplication.getApplicationComponent(this)
                 .inject(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         init();
     }
 
     private void init() {
-        if (!mData.getToken().isEmpty() && !mData.getUserId().isEmpty()) {
+        if (!StringUtils.isNullOrEmpty(mData.getToken()) && !StringUtils.isNullOrEmpty(mData.getUserId())) {
             startActivity(MainActivity.createStartIntent(this));
         } else {
             startActivity(LoginActivity.createStartIntent(this));

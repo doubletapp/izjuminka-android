@@ -79,7 +79,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
         holder.itemView.setOnClickListener(view -> {
             if (holder.mCollapseContainer.getVisibility() == View.VISIBLE) {
                 bindExchange(holder, position);
-            } else {
+            }
+        });
+
+        holder.mHide.setOnClickListener(view -> {
+            if (holder.mCollapseContainer.getVisibility() == View.GONE) {
                 bindCollapse(holder, position);
             }
         });
@@ -91,6 +95,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
                     .load(mData.get(position).getImages().get(0))
                     .apply(RequestOptions.centerCropTransform())
                     .into(holder.mCollapseImage);
+        else
+            holder.mCollapseImage.setImageDrawable(null);
 
         holder.mCollapseDescription.setText(Html.fromHtml(mData.get(position).getDescription()));
         holder.mExchangeDescription.setText(Html.fromHtml(mData.get(position).getDescription()));
@@ -153,6 +159,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
         RecyclerView mExchangeRecycler;
         @BindView(R.id.news_exchange_edit)
         Button mEdit;
+        @BindView(R.id.news_exchange_hide)
+        Button mHide;
 
         private ImageAdapter mAdapter;
 

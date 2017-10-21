@@ -53,7 +53,7 @@ public class PresentersModule {
 
     @NonNull
     @Provides
-    AddNewsPresenter provideAddNewsPresenter() {
-        return new AddNewsPresenter();
+    AddNewsPresenter provideAddNewsPresenter(@NonNull NewsInteractor newsInteractor) {
+        return new AddNewsPresenter(newsInteractor);
     }
 }

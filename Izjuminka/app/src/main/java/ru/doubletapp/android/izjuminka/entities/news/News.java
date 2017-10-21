@@ -16,6 +16,8 @@ public class News implements Parcelable {
     private List<String> mImages;
     @SerializedName("text")
     private String mDescription;
+    @SerializedName("post_id")
+    private int mPostId;
     private boolean mIsExchanged = false;
 
     public News(List<String> images, String description) {
@@ -67,5 +69,13 @@ public class News implements Parcelable {
         parcel.writeStringList(mImages);
         parcel.writeString(mDescription);
         parcel.writeByte((byte) (mIsExchanged ? 1 : 0));
+    }
+
+    public int getPostId() {
+        return mPostId;
+    }
+
+    public void setPostId(int mPostId) {
+        this.mPostId = mPostId;
     }
 }

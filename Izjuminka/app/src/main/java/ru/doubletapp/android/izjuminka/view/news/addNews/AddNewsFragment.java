@@ -1,6 +1,9 @@
 package ru.doubletapp.android.izjuminka.view.news.addNews;
 
 import android.Manifest;
+import android.app.ProgressDialog;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -10,6 +13,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +22,10 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 
 import com.google.android.gms.common.api.GoogleApiClient;
+import android.widget.*;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.vansuita.pickimage.bundle.PickSetup;
 import com.vansuita.pickimage.dialog.PickImageDialog;
 
@@ -26,8 +34,11 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import ru.doubletapp.android.izjuminka.IzjuminkaApplication;
 import ru.doubletapp.android.izjuminka.R;
+import ru.doubletapp.android.izjuminka.entities.news.News;
 import ru.doubletapp.android.izjuminka.presenter.news.AddNewsPresenter;
 import ru.doubletapp.android.izjuminka.view.BaseFragment;
+
+import static ru.doubletapp.android.izjuminka.view.news.addNews.AddNewsActivity.KEY_NEWS;
 
 /**
  * Created by Denis Akimov on 21.10.2017.
@@ -45,16 +56,33 @@ public class AddNewsFragment extends BaseFragment<AddNewsPresenter> {
     EditText mDescription;
     @BindView(R.id.add_news_title)
     EditText mTitle;
+    @BindView(R.id.add_news_link_container)
+    LinearLayout mLinkContainer;
+    @BindView(R.id.news_collapsed_description)
+    TextView mLinkDescription;
+    @BindView(R.id.news_collapsed_image)
+    ImageView mLinkImage;
     @BindView(R.id.add_news_recycler)
     RecyclerView mRecycler;
     private AddImageAdapter mAdapter;
     @Nullable
     private Location mLocation;
+    @Nullable
+    private ProgressDialog mDialog;
+
 
     public static AddNewsFragment newInstance() {
 
         Bundle args = new Bundle();
 
+        AddNewsFragment fragment = new AddNewsFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    public static AddNewsFragment newInstance(News news) {
+        Bundle args = new Bundle();
+        args.putParcelable(KEY_NEWS, news);
         AddNewsFragment fragment = new AddNewsFragment();
         fragment.setArguments(args);
         return fragment;
@@ -160,5 +188,30 @@ public class AddNewsFragment extends BaseFragment<AddNewsPresenter> {
                 mDescription.getText().toString(),
                 mAdapter.getItems(),
                 mLocation);
+    }
+
+    public void showLinkedNews(News news) {
+        mLinkContainer.setVisibility(View.VISIBLE);
+
+        if (!news.getImages().isEmpty())
+            Glide.with(getContext())
+                    .load(news.getImages().get(0))
+                    .apply(RequestOptions.centerCropTransform())
+                    .into(mLinkImage);
+        mLinkDescription.setText(Html.fromHtml(news.getDescription()));
+    }
+
+    public void showLoading() {
+        mDialog = ProgressDialog.show(getContext(), "",
+                getString(R.string.add_news_loading), true);
+    }
+
+    public void hideLoading() {
+        if (mDialog != null)
+            mDialog.hide();
+    }
+
+    public void close() {
+        getActivity().onBackPressed();
     }
 }

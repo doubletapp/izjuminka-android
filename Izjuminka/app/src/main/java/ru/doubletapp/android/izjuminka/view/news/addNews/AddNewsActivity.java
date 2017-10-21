@@ -58,7 +58,7 @@ public class AddNewsActivity extends BaseActivity {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ActivityUtils.replaceFragment(getSupportFragmentManager(), mContainer.getId(), AddNewsFragment.newInstance(),
-                AddNewsFragment.TAG, true, null);
+                AddNewsFragment.TAG, true, getIntent().getExtras());
     }
 
     @Override

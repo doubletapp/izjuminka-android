@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.paginate.Paginate;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -29,6 +31,25 @@ public class NewsFragment extends BaseFragment<NewsPresenter> {
     @BindView(R.id.news_recycler)
     RecyclerView mRecycler;
     private LinearLayoutManager mLayoutManager;
+    private Paginate.Callbacks mCallbacks = new Paginate.Callbacks() {
+        @Override
+        public void onLoadMore() {
+            // Load next page of data (e.g. network or database)
+            mPresenter.getNews();
+        }
+
+        @Override
+        public boolean isLoading() {
+            // Indicate whether new page loading is in progress or not
+            return mPresenter.isLoading();
+        }
+
+        @Override
+        public boolean hasLoadedAllItems() {
+            // Indicate whether all data (pages) are loaded or not
+            return false;
+        }
+    };
 
     public static NewsFragment newInstance() {
 
@@ -67,7 +88,10 @@ public class NewsFragment extends BaseFragment<NewsPresenter> {
         mRecycler.setLayoutManager(mLayoutManager);
         mRecycler.setAdapter(mAdapter);
         mPresenter.getNews();
-        mRecycler.addOnScrollListener(recyclerViewOnScrollListener);
+        Paginate.with(mRecycler, mCallbacks)
+                .setLoadingTriggerThreshold(2)
+                .addLoadingListItem(true)
+                .build();
     }
 
     public void showNews(List<News> news) {
@@ -78,27 +102,4 @@ public class NewsFragment extends BaseFragment<NewsPresenter> {
     public void onAddClick() {
         baseCallback.openAddNews(null);
     }
-
-
-    //pagination
-    private RecyclerView.OnScrollListener recyclerViewOnScrollListener = new RecyclerView.OnScrollListener() {
-        @Override
-        public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-            super.onScrollStateChanged(recyclerView, newState);
-        }
-
-        @Override
-        public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-            super.onScrolled(recyclerView, dx, dy);
-            int visibleItemCount = mLayoutManager.getChildCount();
-            int totalItemCount = mLayoutManager.getItemCount();
-            int firstVisibleItemPosition = mLayoutManager.findFirstVisibleItemPosition();
-            if (!mAdapter.isLoading()) {
-                if ((visibleItemCount + firstVisibleItemPosition) >= totalItemCount
-                        && firstVisibleItemPosition >= 0) {
-                    mPresenter.getNews();
-                }
-            }
-        }
-    };
 }

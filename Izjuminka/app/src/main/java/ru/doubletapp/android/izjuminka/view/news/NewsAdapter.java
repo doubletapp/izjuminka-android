@@ -1,9 +1,18 @@
 package ru.doubletapp.android.izjuminka.view.news;
 
+import android.app.Activity;
+import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,14 +22,18 @@ import butterknife.ButterKnife;
 import ru.doubletapp.android.izjuminka.R;
 import ru.doubletapp.android.izjuminka.entities.news.News;
 
-import android.support.annotation.NonNull;
-import android.widget.RelativeLayout;
-
 /**
  * Created by Denis Akimov on 21.10.2017.
  */
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
+
+    @NonNull
+    private Context mContext;
+
+    public NewsAdapter(@NonNull Context context) {
+        mContext = context;
+    }
 
     @NonNull
     private List<News> mData = new ArrayList<>();
@@ -38,16 +51,28 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
 
     @Override
     public void onBindViewHolder(NewsHolder holder, int position) {
+        Glide.with(mContext)
+                .load(mData.get(position).getImages().get(0))
+                .apply(RequestOptions.centerCropTransform())
+                .into(holder.mImage);
+
+        holder.mTitle.setText(mData.get(position).getDescription());
+
         holder.itemView.setOnClickListener(view -> {
-            if (holder.mCollapse.getVisibility() == View.VISIBLE) {
-                holder.mCollapse.setVisibility(View.GONE);
-                holder.mExpand.setVisibility(View.VISIBLE);
+            if (holder.mIsCollapse) {
+                DisplayMetrics metrics = new DisplayMetrics();
+                ((Activity) mContext).getWindowManager().getDefaultDisplay().getMetrics(metrics);
+
+                int width = metrics.widthPixels;
+                holder.itemView.getLayoutParams().width = width;
+                holder.itemView.getLayoutParams().height = width;
             } else {
-                holder.mCollapse.setVisibility(View.VISIBLE);
-                holder.mExpand.setVisibility(View.GONE);
+                holder.itemView.getLayoutParams().width = mContext.getResources().getDimensionPixelSize(R.dimen.news_collaps_size);
+                holder.itemView.getLayoutParams().height = mContext.getResources().getDimensionPixelSize(R.dimen.news_collaps_size);
             }
+            holder.mIsCollapse = !holder.mIsCollapse;
+            notifyItemChanged(position, new Object());
         });
-        
     }
 
     @Override
@@ -57,10 +82,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
 
     public class NewsHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.news_state_collapse)
-        RelativeLayout mCollapse;
-        @BindView(R.id.news_state_expand)
-        RelativeLayout mExpand;
+        @BindView(R.id.news_image)
+        ImageView mImage;
+        @BindView(R.id.news_title)
+        TextView mTitle;
+        boolean mIsCollapse = false;
 
         public NewsHolder(View itemView) {
             super(itemView);

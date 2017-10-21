@@ -28,7 +28,11 @@ public class NewsPresenter extends BasePresenter<NewsFragment> {
     @Override
     public void attachView(@NonNull NewsFragment view, @Nullable Bundle savedState) {
         super.attachView(view, savedState);
+
+    }
+
+    public void getNews() {
         List<News> news = mNewsInteractor.getNews();
-        Log.d("!!!", "attachView: " + news);
+        if (mView != null)  mView.showNews(news);
     }
 }

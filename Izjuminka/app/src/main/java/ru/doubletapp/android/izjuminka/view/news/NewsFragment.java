@@ -2,13 +2,19 @@ package ru.doubletapp.android.izjuminka.view.news;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import ru.doubletapp.android.izjuminka.IzjuminkaApplication;
 import ru.doubletapp.android.izjuminka.R;
+import ru.doubletapp.android.izjuminka.entities.news.News;
 import ru.doubletapp.android.izjuminka.presenter.NewsPresenter;
 import ru.doubletapp.android.izjuminka.view.BaseFragment;
 
@@ -17,6 +23,10 @@ import ru.doubletapp.android.izjuminka.view.BaseFragment;
  */
 
 public class NewsFragment extends BaseFragment<NewsPresenter> {
+
+    private NewsAdapter mAdapter;
+    @BindView(R.id.news_recycler)
+    RecyclerView mRecycler;
 
     public static NewsFragment newInstance() {
 
@@ -46,5 +56,18 @@ public class NewsFragment extends BaseFragment<NewsPresenter> {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mPresenter.attachView(this, savedInstanceState);
+        init();
+    }
+
+    private void init() {
+        mAdapter = new NewsAdapter(getContext());
+        LinearLayoutManager llm = new LinearLayoutManager(getContext());
+        mRecycler.setLayoutManager(llm);
+        mRecycler.setAdapter(mAdapter);
+        mPresenter.getNews();
+    }
+
+    public void showNews(List<News> news) {
+        mAdapter.setData(news);
     }
 }

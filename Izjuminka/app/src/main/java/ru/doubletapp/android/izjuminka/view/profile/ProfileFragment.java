@@ -3,6 +3,7 @@ package ru.doubletapp.android.izjuminka.view.profile;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -19,9 +20,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import jp.wasabeef.glide.transformations.CropCircleTransformation;
 import ru.doubletapp.android.izjuminka.IzjuminkaApplication;
 import ru.doubletapp.android.izjuminka.R;
+import ru.doubletapp.android.izjuminka.api.profile.MyPostsResponse;
 import ru.doubletapp.android.izjuminka.presenter.profile.ProfilePresenter;
 import ru.doubletapp.android.izjuminka.view.BaseActivity;
 import ru.doubletapp.android.izjuminka.view.BaseFragment;
@@ -41,6 +42,8 @@ public class ProfileFragment extends BaseFragment<ProfilePresenter> {
     ImageView mProfileAvatar;
     @BindView(R.id.profile_username)
     TextView mProfileUsername;
+    @BindView(R.id.profile_swyper)
+    SwipeRefreshLayout mRefresher;
 
     private MyPostsAdapter mPostsAdapter;
 
@@ -76,6 +79,9 @@ public class ProfileFragment extends BaseFragment<ProfilePresenter> {
         Glide.with(this).load(R.drawable.default_profile_avatar)
                 .apply(RequestOptions.circleCropTransform())
                 .into(mProfileAvatar);
+        mRefresher.setOnRefreshListener(() -> {
+            mPresenter.getMyPosts();
+        });
     }
 
     @Nullable
@@ -86,7 +92,8 @@ public class ProfileFragment extends BaseFragment<ProfilePresenter> {
                 .getProfilePresenter();
     }
 
-    public void onPostsLoaded(List<String> posts) {
+    public void onPostsLoaded(List<MyPostsResponse.Results> posts) {
+        mRefresher.setRefreshing(false);
         mPostsAdapter.setData(posts);
     }
 

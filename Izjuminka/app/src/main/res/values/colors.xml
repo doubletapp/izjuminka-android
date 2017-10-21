@@ -6,4 +6,8 @@
     <color name="colorSemiBlack">#8F000000</color>
     <color name="colorBlack50">#7f000000</color>
     <color name="colorPrimaryLight">#C05F95</color>
+    <color name="statusAccepted">#07aa85</color>
+    <color name="statusRejected">#ff6262</color>
+    <color name="statusPending">#4990E2</color>
+    <color name="statusRewarded">#f6a623</color>
 </resources>

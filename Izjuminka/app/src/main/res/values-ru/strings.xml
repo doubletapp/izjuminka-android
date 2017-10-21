@@ -14,8 +14,15 @@
     <string name="send_email_btn_text">Отправить информацию</string>
     <string name="skip">Пропустить</string>
     <string name="info_empty_fields">Поля email и телефон не должны быть пустыми.</string>
+    <string name="app_name">Изюминка</string>
     <string name="info_invalid_phone">Введен неверный телефон</string>
     <string name="settings_title">Настройки</string>
     <string name="settings_save">сохранить</string>
     <string name="settings_logout">Выйти из аккаунта</string>
+    <string name="pending_expl">Ваш новость будет рассмотрена в ближайшее время</string>
+    <string name="status_acceped">одобрено</string>
+    <string name="staus_rejected">отклонено</string>
+    <string name="status_pending">ожидние</string>
+    <string name="status_rewarded">оплачено</string>
+    <string name="view_post">ПОСМОТРЕТЬ ПОСТ</string>
 </resources>

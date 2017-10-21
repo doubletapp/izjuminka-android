@@ -15,6 +15,11 @@ import ru.doubletapp.android.izjuminka.api.profile.ProfileInteractor;
 
 public class EditInteractor {
 
+    public interface EditProfileListener {
+        void onSuccessfullEdit();
+        void onEditFailed();
+    }
+
     @NonNull
     EditRetrofit mEditRetrofit;
 
@@ -22,7 +27,7 @@ public class EditInteractor {
         mEditRetrofit = editRetrofit;
     }
 
-    public void editProfile(@NonNull String email, @NonNull String phone, @NonNull ProfileInteractor.EditProfileListener listener) {
+    public void editProfile(@NonNull String email, @NonNull String phone, @NonNull EditProfileListener listener) {
         mEditRetrofit
                 .edit(new EditRequest(phone, email))
                 .enqueue(new Callback<EditResponse>() {

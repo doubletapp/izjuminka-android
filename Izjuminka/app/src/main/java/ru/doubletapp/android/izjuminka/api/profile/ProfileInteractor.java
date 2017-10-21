@@ -11,13 +11,11 @@ import com.vk.sdk.api.VKResponse;
 import com.vk.sdk.api.model.VKApiUserFull;
 import com.vk.sdk.api.model.VKList;
 
-import javax.inject.Inject;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import ru.doubletapp.android.izjuminka.api.settings.EditRequest;
-import ru.doubletapp.android.izjuminka.api.settings.EditRetrofit;
 
 /**
  * Created by hash on 21/10/2017.
@@ -25,13 +23,20 @@ import ru.doubletapp.android.izjuminka.api.settings.EditRetrofit;
 
 public class ProfileInteractor {
 
+    @NonNull
+    ProfileRetrofit mProfileRetrofit;
+
+    public ProfileInteractor(@NonNull ProfileRetrofit profileRetrofit) {
+        mProfileRetrofit = profileRetrofit;
+    }
+
     public interface ProfileAvatarListener {
         void onGetAvatar(@Nullable String avatarUrl, @NonNull String username);
     }
 
-    public interface EditProfileListener {
-        void onSuccessfullEdit();
-        void onEditFailed();
+    public interface GetMyPostsListener {
+        void onSuccessfullGetPosts(@NonNull List<MyPostsResponse.Results> results);
+        void onGetPostsFailed(@NonNull Throwable t);
     }
 
     public void getProfile(@NonNull ProfileAvatarListener listener) {
@@ -49,6 +54,23 @@ public class ProfileInteractor {
                 }
             }
         });
+    }
+
+    public void getMyPost(@NonNull GetMyPostsListener listener) {
+        mProfileRetrofit.getMyPosts().enqueue(new Callback<MyPostsResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<MyPostsResponse> call, @NonNull Response<MyPostsResponse> response) {
+                if (response.isSuccessful() && response.body() != null && response.body().getResults() != null) {
+                    listener.onSuccessfullGetPosts(response.body().getResults());
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<MyPostsResponse> call, @NonNull Throwable t) {
+                listener.onGetPostsFailed(t);
+            }
+        });
+
     }
 
 

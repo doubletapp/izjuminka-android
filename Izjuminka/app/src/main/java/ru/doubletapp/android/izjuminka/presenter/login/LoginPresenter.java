@@ -2,6 +2,7 @@ package ru.doubletapp.android.izjuminka.presenter.login;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.vk.sdk.VKAccessToken;
 import com.vk.sdk.VKCallback;
@@ -12,6 +13,7 @@ import com.vk.sdk.api.VKError;
 import javax.inject.Inject;
 
 import ru.doubletapp.android.izjuminka.IzjuminkaApplication;
+import ru.doubletapp.android.izjuminka.api.authorization.AuthInteractor;
 import ru.doubletapp.android.izjuminka.presenter.BasePresenter;
 import ru.doubletapp.android.izjuminka.storage.AuthLocalData;
 import ru.doubletapp.android.izjuminka.view.login.LoginFragment;
@@ -24,6 +26,9 @@ public class LoginPresenter extends BasePresenter<LoginFragment> {
 
     @Inject
     AuthLocalData mData;
+
+    @Inject
+    AuthInteractor mAuthInteractor;
 
     @Override
     protected void onViewAttached(@NonNull LoginFragment view) {
@@ -40,9 +45,19 @@ public class LoginPresenter extends BasePresenter<LoginFragment> {
             public void onResult(VKAccessToken res) {
                 // Пользователь успешно авторизовался
                 mData.setUserId(res.userId);
-                mData.setToken(res.accessToken);
+                mData.setVkToken(res.accessToken);
                 mData.setEmail(res.email);
-                if (mView != null) mView.openNextScreen();
+                mAuthInteractor.auth(res.userId, res.accessToken, new AuthInteractor.AuthCallback() {
+                    @Override
+                    public void onSuccessfullAuth() {
+                        if (mView != null) mView.openNextScreen();
+                    }
+
+                    @Override
+                    public void onAuthFailed(Throwable t) {
+                        if (mView != null) mView.openNextScreen();
+                    }
+                });
             }
 
             @Override

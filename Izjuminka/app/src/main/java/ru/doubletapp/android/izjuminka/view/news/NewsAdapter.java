@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -79,8 +80,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
                     .apply(RequestOptions.centerCropTransform())
                     .into(holder.mCollapseImage);
 
-        holder.mCollapseDescription.setText(mData.get(position).getDescription());
-        holder.mExchangeDescription.setText(mData.get(position).getDescription());
+        holder.mCollapseDescription.setText(Html.fromHtml(mData.get(position).getDescription()));
+        holder.mExchangeDescription.setText(Html.fromHtml(mData.get(position).getDescription()));
         if (mData.get(position).isExchanged()) {
             bindExchange(holder, position);
         } else {

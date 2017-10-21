@@ -5,7 +5,7 @@
     <string name="nav_rating_title">Рейтинг</string>
     <string name="login_vk_text">Войти через ВКонтакте</string>
     <string name="or">или</string>
-    <string name="login_anonim_text">Войти анонимно</string>
+    <string name="login_anonim_text">Сообщить новость анонимно</string>
     <string name="next">Далее</string>
     <string name="login_title">Вход</string>
     <string name="phone_hint">Введите Ваш телефон</string>

@@ -6,7 +6,7 @@
     <string name="nav_rating_title" translatable="true">Rating</string>
     <string name="login_vk_text">Login with VK</string>
     <string name="or">or</string>
-    <string name="login_anonim_text">Login anonimus</string>
+    <string name="login_anonim_text">Post anonymously</string>
     <string name="login_title">Login</string>
     <string name="next">Next</string>
     <string name="email_hint">Enter your email</string>

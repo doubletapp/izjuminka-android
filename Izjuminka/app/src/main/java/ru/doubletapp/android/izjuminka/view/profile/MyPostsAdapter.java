@@ -9,7 +9,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,6 +73,8 @@ public class MyPostsAdapter extends RecyclerView.Adapter<MyPostsAdapter.MyPostsV
         TextView mBodyView;
         @BindView(R.id.my_post_status)
         TextView mStatusView;
+        @BindView(R.id.my_post_image)
+        ImageView mImageView;
 
         @BindColor(R.color.statusAccepted)
         @ColorInt int mColorAccepted;
@@ -89,6 +96,12 @@ public class MyPostsAdapter extends RecyclerView.Adapter<MyPostsAdapter.MyPostsV
 
         public void bindData(MyPostsResponse.Results data) {
             mTitleView.setText(StringUtils.getShortString(data.getDescription()));
+            if (!StringUtils.isNullOrEmpty(data.getPhoto())) {
+                Glide.with(mImageView.getContext())
+                        .load(data.getPhoto())
+                        .apply(RequestOptions.centerCropTransform())
+                        .into(mImageView);
+            }
             switch (data.getValidateStatus()) {
                 case STATUS_ACCEPTED:
                     mStatusView.setTextColor(mColorAccepted);

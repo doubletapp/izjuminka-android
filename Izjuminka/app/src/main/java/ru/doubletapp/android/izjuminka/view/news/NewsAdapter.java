@@ -3,6 +3,7 @@ package ru.doubletapp.android.izjuminka.view.news;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -24,6 +25,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import ru.doubletapp.android.izjuminka.R;
 import ru.doubletapp.android.izjuminka.entities.news.News;
+import ru.doubletapp.android.izjuminka.view.BaseActivity;
 
 /**
  * Created by Denis Akimov on 21.10.2017.
@@ -31,10 +33,16 @@ import ru.doubletapp.android.izjuminka.entities.news.News;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
 
+    public interface OnMemasClickListener {
+        void onMemasClick(ArrayList<String> memases);
+    }
+
     @NonNull
     private Context mContext;
     @Nullable
     private NewsListener mListener;
+    @Nullable
+    private OnMemasClickListener mMemasListener;
 
     public NewsAdapter(@NonNull Context context, @Nullable NewsListener listener) {
         mContext = context;
@@ -43,6 +51,10 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    public void setMemasClickListener(OnMemasClickListener listener) {
+        mMemasListener = listener;
     }
 
     @NonNull
@@ -158,7 +170,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
             ButterKnife.bind(this, itemView);
             setIsRecyclable(false);
 
-            mAdapter = new ImageAdapter(mContext);
+            mAdapter = new ImageAdapter(mContext, mMemasListener);
             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
             mExchangeRecycler.setLayoutManager(mLayoutManager);
             mExchangeRecycler.setAdapter(mAdapter);

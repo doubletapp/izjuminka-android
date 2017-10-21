@@ -97,7 +97,9 @@ public class SettingsFragment extends BaseFragment<SettingsPresenter> {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.settings_save:
-                Toast.makeText(getContext(), "SAVE", Toast.LENGTH_SHORT).show();
+                mPresenter.editProfile(
+                        mEmailEdit.getText().toString(),
+                        mPhoneEdit.getText().toString());
                 break;
             default:
                 return false;
@@ -123,6 +125,6 @@ public class SettingsFragment extends BaseFragment<SettingsPresenter> {
 
     @OnClick(R.id.settings_logout)
     void logout() {
-        Toast.makeText(getContext(), "LOGOUT", Toast.LENGTH_SHORT).show();
+        mPresenter.logout();
     }
 }

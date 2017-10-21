@@ -2,12 +2,15 @@ package ru.doubletapp.android.izjuminka.view.news;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,9 +33,16 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
 
     @NonNull
     private Context mContext;
+    @Nullable
+    private NewsListener mListener;
 
-    public NewsAdapter(@NonNull Context context) {
+    public NewsAdapter(@NonNull Context context, @Nullable NewsListener listener) {
         mContext = context;
+        try {
+            mListener = listener;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     @NonNull
@@ -64,19 +74,24 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
     }
 
     private void bind(NewsHolder holder, int position) {
-        Glide.with(mContext)
-                .load(mData.get(position).getImages().get(0))
-                .apply(RequestOptions.centerCropTransform())
-                .into(holder.mCollapseImage);
+        if (!mData.get(position).getImages().isEmpty())
+            Glide.with(mContext)
+                    .load(mData.get(position).getImages().get(0))
+                    .apply(RequestOptions.centerCropTransform())
+                    .into(holder.mCollapseImage);
 
-        holder.mCollapseDescription.setText(mData.get(position).getDescription());
-        holder.mExchangeDescription.setText(mData.get(position).getDescription());
+        holder.mCollapseDescription.setText(Html.fromHtml(mData.get(position).getDescription()));
+        holder.mExchangeDescription.setText(Html.fromHtml(mData.get(position).getDescription()));
         if (mData.get(position).isExchanged()) {
             bindExchange(holder, position);
         } else {
             bindCollapse(holder, position);
         }
         holder.setImages(mData.get(position).getImages());
+        holder.mEdit.setOnClickListener(view -> {
+            if (mListener != null)
+                mListener.onEditClick(mData.get(position));
+        });
 
     }
 
@@ -104,6 +119,10 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
         return mData.size();
     }
 
+    public boolean isLoading() {
+        return mData.isEmpty();
+    }
+
     public class NewsHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.news_collapse)
@@ -120,6 +139,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
         TextView mExchangeDescription;
         @BindView(R.id.news_exchange_recycler)
         RecyclerView mExchangeRecycler;
+        @BindView(R.id.news_exchange_edit)
+        Button mEdit;
 
         private ImageAdapter mAdapter;
 
@@ -138,5 +159,9 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
         public void setImages(List<String> images) {
             mAdapter.setImages(images);
         }
+    }
+
+    public interface NewsListener {
+        void onEditClick(News news);
     }
 }

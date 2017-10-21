@@ -18,6 +18,10 @@
     <string name="info_invalid_phone">Phone is not valid</string>
     <string name="edit">edit</string>
     <string name="view">view</string>
+    <string name="title_hint">Title (Optional)</string>
+    <string name="description_hint">Description</string>
+    <string name="enable_notification">Enable notification for this news?</string>
+    <string name="add_news_add">Add</string>
     <string name="settings_title">Settings</string>
     <string name="settings_save">save</string>
     <string name="settings_logout">Logout</string>
@@ -27,4 +31,5 @@
     <string name="staus_rejected">rejected</string>
     <string name="pending_expl">Your post will be review soon</string>
     <string name="view_post">VIEW POST</string>
+    <string name="add_news">Add news</string>
 </resources>

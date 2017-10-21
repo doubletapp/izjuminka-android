@@ -4,15 +4,24 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
+    <TextView
+        android:id="@+id/news_add_news"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"/>
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:drawableStart="@drawable/ic_add_news"
+        android:gravity="center"
+        android:paddingEnd="@dimen/spacing_18"
+        android:paddingStart="@dimen/spacing_18"
+        android:text="@string/add_news"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"/>
 
     <android.support.v7.widget.RecyclerView
-        android:layout_marginTop="@dimen/spacing_8"
         android:id="@+id/news_recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/spacing_8"/>
 
 </LinearLayout>

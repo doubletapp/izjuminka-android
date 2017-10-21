@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/add_news_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_18"
+            android:background="@drawable/edittext_background"
+            android:hint="@string/title_hint"
+            android:maxLines="2"
+            android:padding="@dimen/spacing_8"/>
+
+        <EditText
+            android:id="@+id/add_news_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_18"
+            android:background="@drawable/edittext_background"
+            android:gravity="top"
+            android:hint="@string/description_hint"
+            android:minHeight="128dp"
+            android:padding="@dimen/spacing_8"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/add_news_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_18"/>
+
+        <CheckBox
+            android:id="@+id/add_news_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_18"
+            android:layout_marginStart="@dimen/spacing_18"
+            android:layout_marginTop="@dimen/spacing_18"
+            android:button="@null"
+            android:drawableEnd="@drawable/checkbox_location_drawable"
+            android:text="@string/enable_notification"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:id="@+id/add_news_location_place"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_18"
+            android:layout_marginStart="@dimen/spacing_18"
+            tools:text="Ekaterinburg"
+            />
+    </LinearLayout>
+</ScrollView>

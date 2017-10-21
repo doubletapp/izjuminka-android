@@ -16,4 +16,6 @@
     <string name="skip">Skip</string>
     <string name="info_empty_fields">Email and phone must not be empty</string>
     <string name="info_invalid_phone">Phone is not valid</string>
+    <string name="edit">edit</string>
+    <string name="view">view</string>
 </resources>

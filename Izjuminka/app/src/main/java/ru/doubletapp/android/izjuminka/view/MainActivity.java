@@ -13,6 +13,7 @@ import android.os.Bundle;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ru.doubletapp.android.izjuminka.R;
+import ru.doubletapp.android.izjuminka.view.news.NewsFragment;
 import ru.doubletapp.android.izjuminka.view.profile.ProfileFragment;
 
 public class MainActivity extends BaseActivity {
@@ -74,6 +75,8 @@ public class MainActivity extends BaseActivity {
             switch (position) {
                 case POSITION_PROFILE:
                     return ProfileFragment.newInstance();
+                case POSITION_NEWS:
+                    return NewsFragment.newInstance();
                 default:
                     return new Fragment();
             }

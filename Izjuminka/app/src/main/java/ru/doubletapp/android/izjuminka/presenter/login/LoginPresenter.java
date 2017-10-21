@@ -1,5 +1,6 @@
 package ru.doubletapp.android.izjuminka.presenter.login;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.util.Log;
@@ -17,6 +18,7 @@ import ru.doubletapp.android.izjuminka.api.authorization.AuthInteractor;
 import ru.doubletapp.android.izjuminka.presenter.BasePresenter;
 import ru.doubletapp.android.izjuminka.storage.AuthLocalData;
 import ru.doubletapp.android.izjuminka.view.login.LoginFragment;
+import ru.doubletapp.android.izjuminka.view.news.addNews.AddNewsActivity;
 
 /**
  * Created by Denis Akimov on 20.10.2017.
@@ -75,6 +77,7 @@ public class LoginPresenter extends BasePresenter<LoginFragment> {
     }
 
     public void onAnonLoginClick() {
-        // TODO: 20.10.2017 go to paper post
+        Context context = mView.getContext();
+        context.startActivity(AddNewsActivity.createStartIntent(mView.getContext(), null));
     }
 }

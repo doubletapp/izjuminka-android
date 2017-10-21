@@ -73,6 +73,8 @@ public class MyPostsResponse {
         private String mVkUrl;
         @SerializedName("cash")
         private double mCash;
+        @SerializedName("photo")
+        private String mPhoto;
 
         public int getId() {
             return mId;
@@ -152,6 +154,12 @@ public class MyPostsResponse {
 
         public void setCash(double cash) {
             mCash = cash;
+        }
+
+        public String getPhoto() { return mPhoto; }
+
+        public void setPhoto(String photo) {
+            mPhoto = photo;
         }
     }
 }

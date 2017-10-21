@@ -2,12 +2,15 @@ package ru.doubletapp.android.izjuminka.view.news;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -23,7 +26,7 @@ import ru.doubletapp.android.izjuminka.view.BaseFragment;
  * Created by Denis Akimov on 21.10.2017.
  */
 
-public class NewsFragment extends BaseFragment<NewsPresenter> {
+public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsAdapter.OnMemasClickListener{
 
     private NewsAdapter mAdapter;
     @BindView(R.id.news_recycler)
@@ -63,6 +66,7 @@ public class NewsFragment extends BaseFragment<NewsPresenter> {
 
     private void init() {
         mAdapter = new NewsAdapter(getContext(), news -> baseCallback.openAddNews(news));
+        mAdapter.setMemasClickListener(this);
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecycler.setLayoutManager(mLayoutManager);
         mRecycler.setAdapter(mAdapter);
@@ -101,4 +105,15 @@ public class NewsFragment extends BaseFragment<NewsPresenter> {
             }
         }
     };
+
+    @Override
+    public void onMemasClick(ArrayList<String> memases) {
+        PhotoViewerFragment fragment = PhotoViewerFragment.newInstance(memases);
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+        fm.beginTransaction()
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                .replace(android.R.id.content, fragment)
+                .addToBackStack(null)
+                .commit();
+    }
 }

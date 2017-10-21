@@ -25,9 +25,11 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageHolder>
 
     private Context mContext;
     private List<String> mImages = new ArrayList<>();
+    private NewsAdapter.OnMemasClickListener mListener;
 
-    public ImageAdapter(Context context) {
+    public ImageAdapter(Context context, NewsAdapter.OnMemasClickListener listener) {
         mContext = context;
+        mListener = listener;
     }
 
     @Override
@@ -42,6 +44,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageHolder>
                 .load(mImages.get(position))
                 .apply(RequestOptions.centerCropTransform())
                 .into(holder.mImage);
+        holder.itemView.setOnClickListener(view -> mListener.onMemasClick((ArrayList<String>) mImages));
     }
 
     @Override
@@ -52,6 +55,10 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageHolder>
     public void setImages(List<String> mImages) {
         this.mImages = mImages;
         notifyDataSetChanged();
+    }
+
+    public ArrayList<String> getImages() {
+        return (ArrayList<String>) mImages;
     }
 
     public class ImageHolder extends RecyclerView.ViewHolder {

@@ -5,4 +5,5 @@
     <color name="colorAccent">#ecedef</color>
     <color name="colorSemiBlack">#8F000000</color>
     <color name="colorBlack50">#7f000000</color>
+    <color name="colorPrimaryLight">#C05F95</color>
 </resources>

@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:ellipsize="marquee"
             android:padding="@dimen/spacing_12"
-            android:textAlignment="center"
+            android:textAlignment="viewStart"
             tools:text="Balblall allavlsa d asdasdas adsdasdasdasdasdasdasdasdasdasdasdsadasdas dasa valv lavlavlavlalvalvalvalvalvavlavlavlavlavlavlavlavlavlavlavlavl"/>
 
         <LinearLayout

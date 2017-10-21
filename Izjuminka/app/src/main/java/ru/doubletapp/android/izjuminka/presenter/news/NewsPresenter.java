@@ -3,6 +3,7 @@ package ru.doubletapp.android.izjuminka.presenter.news;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,13 +18,15 @@ import ru.doubletapp.android.izjuminka.view.news.NewsFragment;
  */
 
 public class NewsPresenter extends BasePresenter<NewsFragment> {
+
+    private static final String TAG = NewsPresenter.class.getSimpleName();
     private int mPrevStart = 0;
     private int mBaseOffset = 10;
 
     @NonNull
     private final NewsInteractor mNewsInteractor;
 
-    List<News> mNewsList = new ArrayList<>();
+    private List<News> mNewsList = new ArrayList<>();
 
 
     public NewsPresenter(@NonNull NewsInteractor newsInteractor) {
@@ -37,7 +40,7 @@ public class NewsPresenter extends BasePresenter<NewsFragment> {
     }
 
     public void getNews() {
-        mNewsInteractor.getNews(mPrevStart, mBaseOffset, new NewsInteractor.NewsCallback() {
+        mNewsInteractor.getNews(mPrevStart, mBaseOffset, new NewsInteractor.NewsLoadCallback() {
             @Override
             public void onNewsReturned(List<News> newsList) {
                 mPrevStart += mBaseOffset;
@@ -48,7 +51,7 @@ public class NewsPresenter extends BasePresenter<NewsFragment> {
             }
 
             @Override
-            public void onGetNewsFailed(Throwable t) {
+            public void onErrorReceived(Throwable t) {
                 if (mView != null) mView.showError(t.getLocalizedMessage());
             }
         });

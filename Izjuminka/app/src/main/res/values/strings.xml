@@ -26,4 +26,8 @@
     <string name="settings_save">save</string>
     <string name="settings_logout">Logout</string>
     <string name="add_news">Add news</string>
+    <string name="add_news_linked_title">The news that you are completing</string>
+    <string name="add_news_description_error">Description must not be empty</string>
+    <string name="add_news_upload_error">Some error occurred when uploading some photo, sorry.</string>
+    <string name="add_news_loading">Loading. Please wait&#8230;</string>
 </resources>

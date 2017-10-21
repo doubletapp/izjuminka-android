@@ -20,6 +20,8 @@ import ru.doubletapp.android.izjuminka.presenter.BasePresenter;
 
 public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
 
+    private static final String STATE_PRESENTER_STATE = "DefaultFragment.STATE_PRESENTER_STATE";
+
     protected T mPresenter;
     public BaseCallback baseCallback;
 
@@ -43,10 +45,12 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment {
         mPresenter = createPresenter();
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        if (mPresenter != null) {
+            Bundle bundle = savedInstanceState == null ? null : savedInstanceState.getBundle(STATE_PRESENTER_STATE);
+            mPresenter.attachView(this, bundle);
+        }
     }
 
     @Nullable

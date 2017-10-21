@@ -42,7 +42,7 @@ public class SplashActivity extends BaseActivity {
         if (!StringUtils.isNullOrEmpty(mData.getToken()) && !StringUtils.isNullOrEmpty(mData.getUserId())) {
             startActivity(MainActivity.createStartIntent(this));
         } else {
-            startActivity(LoginActivity.createStartIntent(this));
+            LoginActivity.start(this);
         }
         finish();
     }

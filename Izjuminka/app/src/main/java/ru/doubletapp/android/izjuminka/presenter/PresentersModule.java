@@ -6,6 +6,7 @@ import dagger.Module;
 import dagger.Provides;
 import ru.doubletapp.android.izjuminka.api.profile.ProfileInteractor;
 import ru.doubletapp.android.izjuminka.api.news.NewsInteractor;
+import ru.doubletapp.android.izjuminka.api.settings.EditInteractor;
 import ru.doubletapp.android.izjuminka.presenter.login.LoginInfoPresenter;
 import ru.doubletapp.android.izjuminka.presenter.login.LoginPresenter;
 import ru.doubletapp.android.izjuminka.presenter.profile.ProfilePresenter;
@@ -43,7 +44,8 @@ public class PresentersModule {
 
     @NonNull
     @Provides
-    SettingsPresenter provideSettingsPresenter(@NonNull AuthLocalData authLocalData) {
-        return new SettingsPresenter(authLocalData);
+    SettingsPresenter provideSettingsPresenter(@NonNull AuthLocalData authLocalData,
+                                               @NonNull EditInteractor editInteractor) {
+        return new SettingsPresenter(authLocalData, editInteractor);
     }
 }

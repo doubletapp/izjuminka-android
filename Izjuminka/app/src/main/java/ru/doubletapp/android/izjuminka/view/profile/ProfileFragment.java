@@ -2,14 +2,25 @@ package ru.doubletapp.android.izjuminka.view.profile;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+
+import java.util.List;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 import ru.doubletapp.android.izjuminka.IzjuminkaApplication;
 import ru.doubletapp.android.izjuminka.R;
 import ru.doubletapp.android.izjuminka.presenter.profile.ProfilePresenter;
+import ru.doubletapp.android.izjuminka.view.BaseActivity;
 import ru.doubletapp.android.izjuminka.view.BaseFragment;
 
 /**
@@ -17,6 +28,15 @@ import ru.doubletapp.android.izjuminka.view.BaseFragment;
  */
 
 public class ProfileFragment extends BaseFragment<ProfilePresenter> {
+
+    @BindView(R.id.profile_toolbar)
+    Toolbar mToolbar;
+    @BindView(R.id.profile_recycler)
+    RecyclerView mRecyclerView;
+    @BindView(R.id.profile_avatar)
+    ImageView mProfileAvatar;
+
+    private MyPostsAdapter mPostsAdapter;
 
     public static ProfileFragment newInstance() {
 
@@ -29,8 +49,9 @@ public class ProfileFragment extends BaseFragment<ProfilePresenter> {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        IzjuminkaApplication.getApplicationComponent(getContext()).inject(this);
         super.onCreate(savedInstanceState);
+        IzjuminkaApplication.getApplicationComponent(getContext()).inject(this);
+        mPostsAdapter = new MyPostsAdapter();
     }
 
     @Nullable
@@ -43,7 +64,12 @@ public class ProfileFragment extends BaseFragment<ProfilePresenter> {
     }
 
     private void initialize() {
-        // TODO: add some init
+        ((BaseActivity) getActivity()).setSupportActionBar(mToolbar);
+        mToolbar.setTitle("OPANA");
+        mRecyclerView.setAdapter(mPostsAdapter);
+        Glide.with(this).load(R.drawable.default_profile_avatar)
+                .apply(RequestOptions.circleCropTransform())
+                .into(mProfileAvatar);
     }
 
     @Nullable
@@ -52,5 +78,9 @@ public class ProfileFragment extends BaseFragment<ProfilePresenter> {
         return IzjuminkaApplication
                 .getApplicationComponent(getContext())
                 .getProfilePresenter();
+    }
+
+    public void onPostsLoaded(List<String> posts) {
+        mPostsAdapter.setData(posts);
     }
 }

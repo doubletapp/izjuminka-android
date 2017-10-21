@@ -157,6 +157,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
         TextView mExchangeDescription;
         @BindView(R.id.news_exchange_recycler)
         RecyclerView mExchangeRecycler;
+        @BindView(R.id.news_exchange_preview)
+        ImageView mImagePreview;
         @BindView(R.id.news_exchange_edit)
         Button mEdit;
         @BindView(R.id.news_exchange_hide)
@@ -177,7 +179,23 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
         }
 
         public void setImages(List<String> images) {
-            mAdapter.setImages(images);
+            if (images.size() == 1) {
+                mExchangeRecycler.setVisibility(View.GONE);
+                mImagePreview.setVisibility(View.VISIBLE);
+                Glide.with(mImagePreview.getContext()).load(images.get(0))
+                        .into(mImagePreview);
+                mImagePreview.setOnClickListener(view -> {
+                    ArrayList<String> imagess = new ArrayList<>();
+                    imagess.add(images.get(0));
+                    if (mMemasListener != null) {
+                        mMemasListener.onMemasClick(imagess);
+                    }
+                });
+            } else {
+                mExchangeRecycler.setVisibility(View.VISIBLE);
+                mImagePreview.setVisibility(View.GONE);
+                mAdapter.setImages(images);
+            }
         }
     }
 

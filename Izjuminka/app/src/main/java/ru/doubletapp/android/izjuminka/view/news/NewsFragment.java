@@ -101,7 +101,7 @@ public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsAda
         mAdapter.setData(news);
     }
 
-    @OnClick
+    @OnClick(R.id.news_add_news)
     public void onAddClick() {
         baseCallback.openAddNews(null);
     }

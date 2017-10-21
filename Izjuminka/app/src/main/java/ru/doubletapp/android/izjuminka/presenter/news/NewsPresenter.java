@@ -1,4 +1,4 @@
-package ru.doubletapp.android.izjuminka.presenter;
+package ru.doubletapp.android.izjuminka.presenter.news;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,6 +9,7 @@ import java.util.List;
 
 import ru.doubletapp.android.izjuminka.api.news.NewsInteractor;
 import ru.doubletapp.android.izjuminka.entities.news.News;
+import ru.doubletapp.android.izjuminka.presenter.BasePresenter;
 import ru.doubletapp.android.izjuminka.view.news.NewsFragment;
 
 /**

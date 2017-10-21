@@ -7,7 +7,8 @@ import javax.inject.Singleton;
 import dagger.Component;
 import ru.doubletapp.android.izjuminka.api.profile.ProfileModule;
 import ru.doubletapp.android.izjuminka.api.news.NewsModule;
-import ru.doubletapp.android.izjuminka.presenter.NewsPresenter;
+import ru.doubletapp.android.izjuminka.presenter.news.AddNewsPresenter;
+import ru.doubletapp.android.izjuminka.presenter.news.NewsPresenter;
 import ru.doubletapp.android.izjuminka.presenter.PresentersModule;
 import ru.doubletapp.android.izjuminka.presenter.login.LoginInfoPresenter;
 import ru.doubletapp.android.izjuminka.presenter.login.LoginPresenter;
@@ -49,5 +50,5 @@ public interface ApplicationComponent {
     @NonNull
     NewsPresenter getNewsPresenter();
 
-    //void inject(NewsPresenter newsPresenter);
+    AddNewsPresenter getAddNewsPresenter();
 }

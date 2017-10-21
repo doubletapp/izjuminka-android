@@ -15,7 +15,7 @@ import butterknife.ButterKnife;
 import ru.doubletapp.android.izjuminka.IzjuminkaApplication;
 import ru.doubletapp.android.izjuminka.R;
 import ru.doubletapp.android.izjuminka.entities.news.News;
-import ru.doubletapp.android.izjuminka.presenter.NewsPresenter;
+import ru.doubletapp.android.izjuminka.presenter.news.NewsPresenter;
 import ru.doubletapp.android.izjuminka.view.BaseFragment;
 
 /**
@@ -60,7 +60,7 @@ public class NewsFragment extends BaseFragment<NewsPresenter> {
     }
 
     private void init() {
-        mAdapter = new NewsAdapter(getContext());
+        mAdapter = new NewsAdapter(getContext(), news -> baseCallback.openAddNews(news));
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         mRecycler.setLayoutManager(llm);
         mRecycler.setAdapter(mAdapter);

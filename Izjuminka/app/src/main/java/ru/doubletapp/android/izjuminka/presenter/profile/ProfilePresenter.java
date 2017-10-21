@@ -6,7 +6,9 @@ import android.support.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
+import ru.doubletapp.android.izjuminka.api.profile.MyPostsResponse;
 import ru.doubletapp.android.izjuminka.api.profile.ProfileInteractor;
+import ru.doubletapp.android.izjuminka.api.profile.ProfileRetrofit;
 import ru.doubletapp.android.izjuminka.presenter.BasePresenter;
 import ru.doubletapp.android.izjuminka.view.profile.ProfileFragment;
 
@@ -28,11 +30,7 @@ public class ProfilePresenter extends BasePresenter<ProfileFragment>
     protected void onViewAttached(@NonNull ProfileFragment view) {
         super.onViewAttached(view);
         getUserAvatar();
-        List<String> posts = new ArrayList<>();
-        posts.add("First");
-        posts.add("Second");
-        posts.add("Third");
-        view.onPostsLoaded(posts);
+        getMyPosts();
     }
 
     private void getUserAvatar() {
@@ -46,5 +44,19 @@ public class ProfilePresenter extends BasePresenter<ProfileFragment>
             mView.setProfileAvatar(avatarUrl);
         if (mView != null)
             mView.setUsername(username);
+    }
+
+    public void getMyPosts() {
+        mProfileInteractor.getMyPost(new ProfileInteractor.GetMyPostsListener() {
+            @Override
+            public void onSuccessfullGetPosts(@NonNull List<MyPostsResponse.Results> results) {
+                mView.onPostsLoaded(results);
+            }
+
+            @Override
+            public void onGetPostsFailed(@NonNull Throwable t) {
+                mView.showError(t.getLocalizedMessage());
+            }
+        });
     }
 }

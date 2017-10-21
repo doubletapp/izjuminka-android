@@ -12,9 +12,9 @@ import java.util.List;
  */
 
 public class News implements Parcelable {
-    @SerializedName("mImages")
+    @SerializedName("photos")
     private List<String> mImages;
-    @SerializedName("mDescription")
+    @SerializedName("text")
     private String mDescription;
     private boolean mIsExchanged = false;
 

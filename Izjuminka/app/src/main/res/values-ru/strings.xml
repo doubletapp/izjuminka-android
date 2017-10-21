@@ -15,4 +15,7 @@
     <string name="skip">Пропустить</string>
     <string name="info_empty_fields">Поля email и телефон не должны быть пустыми.</string>
     <string name="info_invalid_phone">Введен неверный телефон</string>
+    <string name="settings_title">Настройки</string>
+    <string name="settings_save">сохранить</string>
+    <string name="settings_logout">Выйти из аккаунта</string>
 </resources>

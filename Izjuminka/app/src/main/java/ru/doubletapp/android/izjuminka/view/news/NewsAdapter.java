@@ -73,10 +73,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
     }
 
     private void bind(NewsHolder holder, int position) {
-        Glide.with(mContext)
-                .load(mData.get(position).getImages().get(0))
-                .apply(RequestOptions.centerCropTransform())
-                .into(holder.mCollapseImage);
+        if (!mData.get(position).getImages().isEmpty())
+            Glide.with(mContext)
+                    .load(mData.get(position).getImages().get(0))
+                    .apply(RequestOptions.centerCropTransform())
+                    .into(holder.mCollapseImage);
 
         holder.mCollapseDescription.setText(mData.get(position).getDescription());
         holder.mExchangeDescription.setText(mData.get(position).getDescription());
@@ -115,6 +116,10 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
     @Override
     public int getItemCount() {
         return mData.size();
+    }
+
+    public boolean isLoading() {
+        return mData.isEmpty();
     }
 
     public class NewsHolder extends RecyclerView.ViewHolder {

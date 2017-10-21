@@ -35,6 +35,9 @@
                 <action android:name="android.intent.action.MAIN"/>
             </intent-filter>
         </activity>
+        <activity android:name=".view.settings.SettingsActivity"
+                  android:screenOrientation="portrait"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
             android:name=".view.news.addNews.AddNewsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>

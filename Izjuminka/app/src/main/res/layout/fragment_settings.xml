@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@android:color/background_light">
+    
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/settings_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        />
+    
+    <EditText
+        android:id="@+id/settings_phone"
+        android:layout_width="match_parent"
+        android:drawableLeft="@drawable/ic_phone"
+        style="@style/settings_edit_style"
+        android:background="@drawable/edittext_background"/>
+
+    <EditText
+        android:id="@+id/settings_email"
+        android:layout_width="match_parent"
+        android:drawableLeft="@drawable/ic_email"
+        style="@style/settings_edit_style"
+        android:background="@drawable/edittext_background"/>
+
+    <TextView
+        android:id="@+id/settings_logout"
+        android:layout_width="match_parent"
+        android:drawableLeft="@drawable/ic_logout"
+        style="@style/settings_edit_style"
+        android:text="@string/settings_logout"
+        android:textColor="@android:color/black"
+        android:background="@drawable/white_button_background"/>
+
+
+</LinearLayout>

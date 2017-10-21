@@ -22,4 +22,8 @@
     <string name="description_hint">Description</string>
     <string name="enable_notification">Enable notification for this news?</string>
     <string name="add_news_add">Add</string>
+    <string name="settings_title">Settings</string>
+    <string name="settings_save">save</string>
+    <string name="settings_logout">Logout</string>
+    <string name="add_news">Add news</string>
 </resources>

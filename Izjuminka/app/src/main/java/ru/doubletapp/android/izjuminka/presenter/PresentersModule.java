@@ -9,6 +9,7 @@ import ru.doubletapp.android.izjuminka.api.news.NewsInteractor;
 import ru.doubletapp.android.izjuminka.presenter.login.LoginInfoPresenter;
 import ru.doubletapp.android.izjuminka.presenter.login.LoginPresenter;
 import ru.doubletapp.android.izjuminka.presenter.profile.ProfilePresenter;
+import ru.doubletapp.android.izjuminka.storage.AuthLocalData;
 
 /**
  * Created by hash on 20/10/2017.
@@ -38,5 +39,11 @@ public class PresentersModule {
     @Provides
     NewsPresenter provideNewsPresenter(@NonNull NewsInteractor newsInteractor) {
         return new NewsPresenter(newsInteractor);
+    }
+
+    @NonNull
+    @Provides
+    SettingsPresenter provideSettingsPresenter(@NonNull AuthLocalData authLocalData) {
+        return new SettingsPresenter(authLocalData);
     }
 }

@@ -18,12 +18,14 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 import ru.doubletapp.android.izjuminka.IzjuminkaApplication;
 import ru.doubletapp.android.izjuminka.R;
 import ru.doubletapp.android.izjuminka.presenter.profile.ProfilePresenter;
 import ru.doubletapp.android.izjuminka.view.BaseActivity;
 import ru.doubletapp.android.izjuminka.view.BaseFragment;
+import ru.doubletapp.android.izjuminka.view.settings.SettingsActivity;
 
 /**
  * Created by hash on 20/10/2017.
@@ -96,5 +98,10 @@ public class ProfileFragment extends BaseFragment<ProfilePresenter> {
 
     public void setUsername(@NonNull String username) {
         mProfileUsername.setText(username);
+    }
+
+    @OnClick(R.id.profile_settings)
+    void onSettingsClick() {
+        SettingsActivity.start(getContext());
     }
 }

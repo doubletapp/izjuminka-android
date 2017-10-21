@@ -1,10 +1,10 @@
 package ru.doubletapp.android.izjuminka.view.news;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,28 +51,52 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
 
     @Override
     public void onBindViewHolder(NewsHolder holder, int position) {
+
+        bind(holder, position);
+
+        holder.itemView.setOnClickListener(view -> {
+            if (holder.mCollapseContainer.getVisibility() == View.VISIBLE) {
+                bindExchange(holder, position);
+            } else {
+                bindCollapse(holder, position);
+            }
+        });
+    }
+
+    private void bind(NewsHolder holder, int position) {
         Glide.with(mContext)
                 .load(mData.get(position).getImages().get(0))
                 .apply(RequestOptions.centerCropTransform())
-                .into(holder.mImage);
+                .into(holder.mCollapseImage);
 
-        holder.mTitle.setText(mData.get(position).getDescription());
+        holder.mCollapseDescription.setText(mData.get(position).getDescription());
+        holder.mExchangeDescription.setText(mData.get(position).getDescription());
+        if (mData.get(position).isExchanged()) {
+            bindExchange(holder, position);
+        } else {
+            bindCollapse(holder, position);
+        }
+        holder.setImages(mData.get(position).getImages());
 
-        holder.itemView.setOnClickListener(view -> {
-            if (holder.mIsCollapse) {
-                DisplayMetrics metrics = new DisplayMetrics();
-                ((Activity) mContext).getWindowManager().getDefaultDisplay().getMetrics(metrics);
+    }
 
-                int width = metrics.widthPixels;
-                holder.itemView.getLayoutParams().width = width;
-                holder.itemView.getLayoutParams().height = width;
-            } else {
-                holder.itemView.getLayoutParams().width = mContext.getResources().getDimensionPixelSize(R.dimen.news_collaps_size);
-                holder.itemView.getLayoutParams().height = mContext.getResources().getDimensionPixelSize(R.dimen.news_collaps_size);
-            }
-            holder.mIsCollapse = !holder.mIsCollapse;
-            notifyItemChanged(position, new Object());
-        });
+    private void bindCollapse(NewsHolder holder, int position) {
+        mData.get(position).setExchanged(false);
+
+        holder.mCollapseContainer.setVisibility(View.VISIBLE);
+        holder.mExchangeContainer.setVisibility(View.GONE);
+
+        holder.itemView.invalidate();
+        holder.itemView.requestLayout();
+    }
+
+    private void bindExchange(NewsHolder holder, int position) {
+        mData.get(position).setExchanged(true);
+        holder.mCollapseContainer.setVisibility(View.GONE);
+        holder.mExchangeContainer.setVisibility(View.VISIBLE);
+
+        holder.itemView.invalidate();
+        holder.itemView.requestLayout();
     }
 
     @Override
@@ -82,15 +106,37 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsHolder> {
 
     public class NewsHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.news_image)
-        ImageView mImage;
-        @BindView(R.id.news_title)
-        TextView mTitle;
-        boolean mIsCollapse = false;
+        @BindView(R.id.news_collapse)
+        CardView mCollapseContainer;
+        @BindView(R.id.news_exchange)
+        CardView mExchangeContainer;
+
+        @BindView(R.id.news_collapsed_image)
+        ImageView mCollapseImage;
+        @BindView(R.id.news_collapsed_description)
+        TextView mCollapseDescription;
+
+        @BindView(R.id.news_exchange_description)
+        TextView mExchangeDescription;
+        @BindView(R.id.news_exchange_recycler)
+        RecyclerView mExchangeRecycler;
+
+        private ImageAdapter mAdapter;
+
 
         public NewsHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            setIsRecyclable(false);
+
+            mAdapter = new ImageAdapter(mContext);
+            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
+            mExchangeRecycler.setLayoutManager(mLayoutManager);
+            mExchangeRecycler.setAdapter(mAdapter);
+        }
+
+        public void setImages(List<String> images) {
+            mAdapter.setImages(images);
         }
     }
 }

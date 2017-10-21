@@ -13,6 +13,7 @@ public class News {
     private List<String> mImages;
     @SerializedName("mDescription")
     private String mDescription;
+    private boolean mIsExchanged = false;
 
     public News(List<String> images, String description) {
         mImages = images;
@@ -25,5 +26,13 @@ public class News {
 
     public String getDescription() {
         return mDescription;
+    }
+
+    public boolean isExchanged() {
+        return mIsExchanged;
+    }
+
+    public void setExchanged(boolean exchanged) {
+        mIsExchanged = exchanged;
     }
 }

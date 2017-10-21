@@ -11,6 +11,7 @@ import ru.doubletapp.android.izjuminka.api.profile.ProfileModule;
 import ru.doubletapp.android.izjuminka.api.news.NewsModule;
 import ru.doubletapp.android.izjuminka.presenter.news.AddNewsPresenter;
 import ru.doubletapp.android.izjuminka.presenter.news.NewsPresenter;
+import ru.doubletapp.android.izjuminka.api.settings.EditModule;
 import ru.doubletapp.android.izjuminka.presenter.PresentersModule;
 import ru.doubletapp.android.izjuminka.presenter.SettingsPresenter;
 import ru.doubletapp.android.izjuminka.presenter.login.LoginInfoPresenter;
@@ -28,7 +29,7 @@ import ru.doubletapp.android.izjuminka.view.profile.ProfileFragment;
 @SuppressWarnings("NullableProblems")
 @Singleton
 @Component(modules = {AndroidApplicationModule.class, RetrofitModule.class, PresentersModule.class, StorageModule.class,
-        ProfileModule.class, NewsModule.class, AuthModule.class})
+        ProfileModule.class, NewsModule.class, AuthModule.class, EditModule.class})
 public interface ApplicationComponent {
 
     @NonNull
@@ -58,7 +59,4 @@ public interface ApplicationComponent {
 
     @NonNull
     SettingsPresenter getSettingsPresenter();
-
-    @NonNull
-    AuthInteractor getAuthInteractor();
 }

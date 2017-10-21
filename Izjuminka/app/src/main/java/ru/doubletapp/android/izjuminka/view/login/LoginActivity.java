@@ -35,8 +35,9 @@ public class LoginActivity extends BaseActivity implements LoginActivityCallback
     @BindView(R.id.login_content_container)
     FrameLayout container;
 
-    public static Intent createStartIntent(Context fromContext) {
-        return new Intent(fromContext, LoginActivity.class);
+    public static void start(Context context) {
+        Intent starter = new Intent(context, LoginActivity.class);
+        context.startActivity(starter);
     }
 
     @Override

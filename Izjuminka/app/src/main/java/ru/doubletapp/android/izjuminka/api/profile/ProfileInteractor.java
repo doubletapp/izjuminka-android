@@ -11,6 +11,14 @@ import com.vk.sdk.api.VKResponse;
 import com.vk.sdk.api.model.VKApiUserFull;
 import com.vk.sdk.api.model.VKList;
 
+import javax.inject.Inject;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import ru.doubletapp.android.izjuminka.api.settings.EditRequest;
+import ru.doubletapp.android.izjuminka.api.settings.EditRetrofit;
+
 /**
  * Created by hash on 21/10/2017.
  */
@@ -19,6 +27,11 @@ public class ProfileInteractor {
 
     public interface ProfileAvatarListener {
         void onGetAvatar(@Nullable String avatarUrl, @NonNull String username);
+    }
+
+    public interface EditProfileListener {
+        void onSuccessfullEdit();
+        void onEditFailed();
     }
 
     public void getProfile(@NonNull ProfileAvatarListener listener) {
@@ -37,6 +50,8 @@ public class ProfileInteractor {
             }
         });
     }
+
+
 
 
 }

@@ -35,7 +35,7 @@ public class SettingsPresenter extends BasePresenter<SettingsFragment> {
     }
 
     public void editProfile(@NonNull String email, @NonNull String phone) {
-        mEditInteractor.editProfile(email, phone, new ProfileInteractor.EditProfileListener() {
+        mEditInteractor.editProfile(email, phone, new EditInteractor.EditProfileListener() {
             @Override
             public void onSuccessfullEdit() {
                 mAuthLocalData.setEmail(email);

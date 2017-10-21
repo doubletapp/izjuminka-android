@@ -22,6 +22,7 @@ public class NewsPresenter extends BasePresenter<NewsFragment> {
     private static final String TAG = NewsPresenter.class.getSimpleName();
     private int mPrevStart = 0;
     private int mBaseOffset = 10;
+    private boolean mIsLoading = false;
 
     @NonNull
     private final NewsInteractor mNewsInteractor;
@@ -40,20 +41,28 @@ public class NewsPresenter extends BasePresenter<NewsFragment> {
     }
 
     public void getNews() {
+        mIsLoading = true;
         mNewsInteractor.getNews(mPrevStart, mBaseOffset, new NewsInteractor.NewsLoadCallback() {
             @Override
             public void onNewsReturned(List<News> newsList) {
                 mPrevStart += mBaseOffset;
                 if (mView != null) {
-                    mNewsList.addAll(newsList);
+                    for (News news : newsList)
+                        if (!mNewsList.contains(news)) mNewsList.add(news);
                     mView.showNews(mNewsList);
                 }
+                mIsLoading = false;
             }
 
             @Override
             public void onErrorReceived(Throwable t) {
                 if (mView != null) mView.showError(t.getLocalizedMessage());
+                mIsLoading = false;
             }
         });
+    }
+
+    public boolean isLoading() {
+        return mIsLoading;
     }
 }

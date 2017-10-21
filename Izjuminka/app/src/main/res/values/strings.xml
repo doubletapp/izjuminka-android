@@ -36,4 +36,5 @@
     <string name="pending_expl">Your post will be review soon</string>
     <string name="view_post">VIEW POST</string>
     <string name="add_news">Add news</string>
+    <string name="hide">hide</string>
 </resources>

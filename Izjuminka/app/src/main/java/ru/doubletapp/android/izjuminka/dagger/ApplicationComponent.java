@@ -9,6 +9,7 @@ import ru.doubletapp.android.izjuminka.api.profile.ProfileModule;
 import ru.doubletapp.android.izjuminka.api.news.NewsModule;
 import ru.doubletapp.android.izjuminka.presenter.NewsPresenter;
 import ru.doubletapp.android.izjuminka.presenter.PresentersModule;
+import ru.doubletapp.android.izjuminka.presenter.SettingsPresenter;
 import ru.doubletapp.android.izjuminka.presenter.login.LoginInfoPresenter;
 import ru.doubletapp.android.izjuminka.presenter.login.LoginPresenter;
 import ru.doubletapp.android.izjuminka.presenter.profile.ProfilePresenter;
@@ -49,5 +50,6 @@ public interface ApplicationComponent {
     @NonNull
     NewsPresenter getNewsPresenter();
 
-    //void inject(NewsPresenter newsPresenter);
+    @NonNull
+    SettingsPresenter getSettingsPresenter();
 }

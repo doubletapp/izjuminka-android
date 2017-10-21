@@ -8,7 +8,7 @@
                 android:layout_marginEnd="@dimen/spacing_8"
                 android:layout_marginStart="@dimen/spacing_8"
                 android:animateLayoutChanges="true"
-                android:background="@color/colorAccent">
+                android:background="@android:color/transparent">
 
     <include
         android:id="@+id/news_collapse"

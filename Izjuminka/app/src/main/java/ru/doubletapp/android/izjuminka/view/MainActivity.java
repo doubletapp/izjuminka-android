@@ -1,5 +1,6 @@
 package ru.doubletapp.android.izjuminka.view;
 
+import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,7 +14,9 @@ import android.os.Bundle;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ru.doubletapp.android.izjuminka.R;
+import ru.doubletapp.android.izjuminka.entities.news.News;
 import ru.doubletapp.android.izjuminka.view.news.NewsFragment;
+import ru.doubletapp.android.izjuminka.view.news.addNews.AddNewsActivity;
 import ru.doubletapp.android.izjuminka.view.profile.ProfileFragment;
 
 public class MainActivity extends BaseActivity {
@@ -56,6 +59,11 @@ public class MainActivity extends BaseActivity {
             }
             return true;
         });
+    }
+
+    @Override
+    public void openAddNews(@Nullable News news) {
+        startActivity(AddNewsActivity.createStartIntent(this, news));
     }
 
     private class TabPagerAdapter extends FragmentStatePagerAdapter {

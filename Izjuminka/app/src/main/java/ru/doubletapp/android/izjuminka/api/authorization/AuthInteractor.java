@@ -2,7 +2,6 @@ package ru.doubletapp.android.izjuminka.api.authorization;
 
 import android.support.annotation.NonNull;
 import android.util.Log;
-import android.widget.Toast;
 
 import retrofit2.Call;
 import retrofit2.Callback;

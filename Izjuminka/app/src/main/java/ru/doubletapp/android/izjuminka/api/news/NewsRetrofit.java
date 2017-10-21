@@ -1,8 +1,9 @@
 package ru.doubletapp.android.izjuminka.api.news;
 
-import java.util.List;
+import retrofit2.Call;
+import retrofit2.http.*;
 
-import ru.doubletapp.android.izjuminka.entities.news.News;
+import android.support.annotation.NonNull;
 
 /**
  * Created by Denis Akimov on 21.10.2017.
@@ -10,6 +11,9 @@ import ru.doubletapp.android.izjuminka.entities.news.News;
 
 public interface NewsRetrofit {
 
-    List<News> getNews();
+    @NonNull
+    @GET("news/")
+    Call<NewsResponse> getNews(@Query("offset") int offset,
+                               @Query("count") int count);
 
 }

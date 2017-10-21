@@ -14,18 +14,12 @@ import javax.inject.Singleton;
 
 @Module
 public class NewsModule {
-    @NonNull
-    @Singleton
-    @Provides
-    NewsRemoteRepository provideNewsRemoteRepository(@NonNull NewsRetrofit newsRetrofit) {
-        return new NewsRemoteRepository(newsRetrofit);
-    }
 
     @NonNull
     @Singleton
     @Provides
-    NewsInteractor provideNewsInteractor(@NonNull NewsRemoteRepository newsRemoteRepository) {
-        return new NewsInteractor(newsRemoteRepository);
+    NewsInteractor provideNewsInteractor(@NonNull NewsRetrofit newsRetrofit) {
+        return new NewsInteractor(newsRetrofit);
     }
 
     @NonNull

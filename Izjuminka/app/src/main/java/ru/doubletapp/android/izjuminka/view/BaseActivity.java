@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import butterknife.Unbinder;
 import ru.doubletapp.android.izjuminka.callbacks.BaseCallback;
-import ru.doubletapp.android.izjuminka.utils.StringUtils;
+import ru.doubletapp.android.izjuminka.entities.news.News;
 
 /**
  * Created by Denis Akimov on 20.10.2017.
@@ -24,6 +24,11 @@ public class BaseActivity extends AppCompatActivity implements BaseCallback {
 
     @Override
     public void setTitle(String title) {
+
+    }
+
+    @Override
+    public void openAddNews(@Nullable News news) {
 
     }
 }

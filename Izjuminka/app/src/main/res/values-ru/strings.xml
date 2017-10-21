@@ -14,7 +14,6 @@
     <string name="send_email_btn_text">Отправить информацию</string>
     <string name="skip">Пропустить</string>
     <string name="info_empty_fields">Поля email и телефон не должны быть пустыми.</string>
-    <string name="app_name" translatable="false"></string>
     <string name="info_invalid_phone">Введен неверный телефон</string>
     <string name="settings_title">Настройки</string>
     <string name="settings_save">сохранить</string>

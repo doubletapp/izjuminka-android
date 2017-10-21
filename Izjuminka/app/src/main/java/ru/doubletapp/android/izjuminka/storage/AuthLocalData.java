@@ -11,6 +11,7 @@ import android.support.annotation.NonNull;
 public class AuthLocalData {
 
     private static final String USER_DATA_FILE_NAME = "auth_data";
+    private static final String KEY_VK_TOKEN = "vk_token";
     private static final String KEY_TOKEN = "token";
     private static final String KEY_EMAIL = "email";
     private static final String KEY_USER_ID = "user_id";
@@ -49,6 +50,14 @@ public class AuthLocalData {
         return getString(KEY_TOKEN);
     }
 
+    public void setVkToken(String vkToken) {
+        putString(KEY_VK_TOKEN, vkToken);
+    }
+
+    public String getVkToken() {
+        return getString(KEY_VK_TOKEN);
+    }
+
     public void setEmail(String refreshToken) {
         putString(KEY_EMAIL, refreshToken);
     }
@@ -75,5 +84,9 @@ public class AuthLocalData {
 
     public String getPhone() {
         return getString(KEY_PHONE);
+    }
+
+    public boolean isLoggedIn() {
+        return getToken()!= null;
     }
 }

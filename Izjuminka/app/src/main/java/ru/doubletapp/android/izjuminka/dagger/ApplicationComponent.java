@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import javax.inject.Singleton;
 
 import dagger.Component;
+import ru.doubletapp.android.izjuminka.api.profile.ProfileModule;
 import ru.doubletapp.android.izjuminka.presenter.PresentersModule;
 import ru.doubletapp.android.izjuminka.presenter.login.LoginInfoPresenter;
 import ru.doubletapp.android.izjuminka.presenter.profile.ProfilePresenter;
@@ -20,8 +21,10 @@ import android.support.annotation.NonNull;
  * Created by hash on 20/10/2017.
  */
 
+@SuppressWarnings("NullableProblems")
 @Singleton
-@Component(modules = {AndroidApplicationModule.class, RetrofitModule.class, PresentersModule.class, StorageModule.class})
+@Component(modules = {AndroidApplicationModule.class, RetrofitModule.class, PresentersModule.class, StorageModule.class,
+        ProfileModule.class})
 public interface ApplicationComponent {
 
     @NonNull

@@ -1,6 +1,7 @@
 package ru.doubletapp.android.izjuminka.view.profile;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -8,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -35,6 +37,8 @@ public class ProfileFragment extends BaseFragment<ProfilePresenter> {
     RecyclerView mRecyclerView;
     @BindView(R.id.profile_avatar)
     ImageView mProfileAvatar;
+    @BindView(R.id.profile_username)
+    TextView mProfileUsername;
 
     private MyPostsAdapter mPostsAdapter;
 
@@ -82,5 +86,15 @@ public class ProfileFragment extends BaseFragment<ProfilePresenter> {
 
     public void onPostsLoaded(List<String> posts) {
         mPostsAdapter.setData(posts);
+    }
+
+    public void setProfileAvatar(@NonNull String profileAvatar) {
+        Glide.with(this).load(profileAvatar)
+                .apply(RequestOptions.circleCropTransform())
+                .into(mProfileAvatar);
+    }
+
+    public void setUsername(@NonNull String username) {
+        mProfileUsername.setText(username);
     }
 }

@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import dagger.Module;
 import dagger.Provides;
+import ru.doubletapp.android.izjuminka.api.profile.ProfileInteractor;
 import ru.doubletapp.android.izjuminka.presenter.login.LoginInfoPresenter;
 import ru.doubletapp.android.izjuminka.presenter.login.LoginPresenter;
 import ru.doubletapp.android.izjuminka.presenter.profile.ProfilePresenter;
@@ -16,8 +17,8 @@ import ru.doubletapp.android.izjuminka.presenter.profile.ProfilePresenter;
 public class PresentersModule {
     @NonNull
     @Provides
-    ProfilePresenter provideProfilePresenter() {
-        return new ProfilePresenter();
+    ProfilePresenter provideProfilePresenter(@NonNull ProfileInteractor profileInteractor) {
+        return new ProfilePresenter(profileInteractor);
     }
 
     @NonNull

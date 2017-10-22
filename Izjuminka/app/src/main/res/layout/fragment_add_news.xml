@@ -52,6 +52,19 @@
             android:minHeight="128dp"
             android:padding="@dimen/spacing_8"/>
 
+        <Button
+            android:id="@+id/add_news_speechkit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/speech_recognize"
+            android:gravity="left|center_vertical"
+            android:drawablePadding="8dp"
+            android:drawableLeft="@drawable/ic_microphone"
+            android:background="@drawable/white_button_background"
+            android:padding="4dp"/>
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/add_news_recycler"
             android:layout_width="match_parent"

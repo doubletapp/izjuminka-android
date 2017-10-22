@@ -39,4 +39,5 @@
     <string name="title_hint">Заголовок (не обязательно)</string>
     <string name="view">смотреть</string>
     <string name="title_rating">Рейтинг</string>
+    <string name="speech_recognize">Продиктовать</string>
 </resources>

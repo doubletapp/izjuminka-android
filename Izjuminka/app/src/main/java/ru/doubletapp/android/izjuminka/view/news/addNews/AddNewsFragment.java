@@ -2,6 +2,7 @@ package ru.doubletapp.android.izjuminka.view.news.addNews;
 
 import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.content.pm.PackageManager;
@@ -37,7 +38,9 @@ import ru.doubletapp.android.izjuminka.R;
 import ru.doubletapp.android.izjuminka.entities.news.News;
 import ru.doubletapp.android.izjuminka.presenter.news.AddNewsPresenter;
 import ru.doubletapp.android.izjuminka.view.BaseFragment;
+import ru.yandex.speechkit.gui.RecognizerActivity;
 
+import static android.app.Activity.RESULT_OK;
 import static ru.doubletapp.android.izjuminka.view.news.addNews.AddNewsActivity.KEY_NEWS;
 
 /**
@@ -49,6 +52,7 @@ public class AddNewsFragment extends BaseFragment<AddNewsPresenter> {
     public static final String TAG = AddNewsFragment.class.getSimpleName();
     private static final int PERMISSION_STORE_REQUEST_CODE = 0;
     private static final int PERMISSION_LOCATION_REQUEST_CODE = 1;
+    private static final int REQUEST_CODE_SPEECH_RECOGNIZER = 11;
 
     @BindView(R.id.add_news_location)
     CheckBox mLocationChecker;
@@ -169,6 +173,11 @@ public class AddNewsFragment extends BaseFragment<AddNewsPresenter> {
         mLocationChecker.setChecked(false);
     }
 
+    @OnClick(R.id.add_news_speechkit)
+    void recognizeSpeech() {
+        startActivityForResult(new Intent(getContext(), RecognizerActivity.class), REQUEST_CODE_SPEECH_RECOGNIZER);
+    }
+
     private void requestLocation() {
         MyLocation.LocationResult locationResult = new MyLocation.LocationResult() {
             @Override
@@ -213,5 +222,13 @@ public class AddNewsFragment extends BaseFragment<AddNewsPresenter> {
 
     public void close() {
         getActivity().onBackPressed();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE_SPEECH_RECOGNIZER && resultCode == RecognizerActivity.RESULT_OK) {
+            String result = data.getStringExtra(RecognizerActivity.EXTRA_RESULT);
+            mDescription.setText(result);
+        }
     }
 }

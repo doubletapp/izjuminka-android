@@ -24,25 +24,24 @@
 
         <ImageView
             android:id="@+id/rating_avatar"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_gravity="center_vertical"
             android:layout_marginBottom="@dimen/spacing_8"
-            android:layout_marginEnd="@dimen/spacing_14"
-            android:layout_marginStart="32dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="@dimen/spacing_8"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/spacing_18"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center_vertical">
 
             <TextView
                 android:id="@+id/rating_lastname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_12"
                 android:textSize="20sp"
                 tools:text="Анчутин"/>
 
@@ -58,7 +57,7 @@
                 android:id="@+id/rating_hype"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="8dp"
                 android:drawableStart="@drawable/ic_chart"
                 android:gravity="center_vertical"
                 tools:text="100500"/>

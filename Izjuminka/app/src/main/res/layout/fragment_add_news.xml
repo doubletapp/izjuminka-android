@@ -13,13 +13,18 @@
             android:id="@+id/add_news_link_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
             android:orientation="vertical"
             android:visibility="gone">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/spacing_8"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
                 android:text="@string/add_news_linked_title"/>
 
             <include
@@ -31,7 +36,7 @@
             android:id="@+id/add_news_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/spacing_18"
+            android:layout_margin="16dp"
             android:background="@drawable/edittext_background"
             android:hint="@string/title_hint"
             android:maxLines="2"

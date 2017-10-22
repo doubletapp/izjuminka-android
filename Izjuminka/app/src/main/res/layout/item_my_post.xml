@@ -5,7 +5,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
+    android:layout_marginBottom="4dp"
+    android:layout_marginEnd="12dp"
+    android:layout_marginStart="12dp"
+    android:layout_marginTop="12dp"
     app:cardCornerRadius="5dp"
     >
     <LinearLayout
@@ -29,7 +32,7 @@
                 android:id="@+id/my_post_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:maxLines="2"
                 android:ellipsize="end"
                 tools:text="My Post Title"/>
@@ -39,6 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
+                android:textSize="12sp"
                 android:textAllCaps="true"
                 tools:text="rejected"/>
 
@@ -48,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="6dp"
                 android:paddingBottom="6dp"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 android:background="@drawable/white_button_background"
                 tools:text="My Post Body"/>
         </LinearLayout>

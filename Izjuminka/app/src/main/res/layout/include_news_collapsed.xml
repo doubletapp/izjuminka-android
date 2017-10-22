@@ -8,9 +8,11 @@
                                     android:orientation="vertical"
                                     app:cardCornerRadius="5dp">
 
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="96dp"
+        android:baselineAligned="false">
 
         <ImageView
             android:id="@+id/news_collapsed_image"
@@ -20,15 +22,17 @@
 
         <TextView
             android:id="@+id/news_collapsed_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_toEndOf="@id/news_collapsed_image"
-            android:ellipsize="marquee"
-            android:maxLines="3"
-            android:padding="@dimen/spacing_12"
-            tools:text="Balblall allavlsadasdasdasdasdasdasavalvlavlavlavlalvalvalvalvalvavlavlavlavlavlavlavlavlavlavlavlavl"/>
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_gravity="fill"
+            android:maxLines="5"
+            android:ellipsize="end"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"/>
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </android.support.v7.widget.CardView>

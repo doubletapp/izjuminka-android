@@ -22,8 +22,8 @@
         android:id="@+id/main_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:itemIconTint="@android:color/black"
-        app:itemTextColor="@android:color/black"
+        app:itemIconTint="@drawable/bottom_navigation_color_state"
+        app:itemTextColor="@drawable/bottom_navigation_color_state"
         app:menu="@menu/menu_navigation_bottom"/>
 
 </LinearLayout>

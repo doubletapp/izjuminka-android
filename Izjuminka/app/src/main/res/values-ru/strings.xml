@@ -22,7 +22,20 @@
     <string name="pending_expl">Ваш новость будет рассмотрена в ближайшее время</string>
     <string name="status_acceped">одобрено</string>
     <string name="staus_rejected">отклонено</string>
-    <string name="status_pending">ожидние</string>
+    <string name="status_pending">на рассмотрении</string>
     <string name="status_rewarded">оплачено</string>
     <string name="view_post">ПОСМОТРЕТЬ ПОСТ</string>
+    <string name="create_post">Новая запись</string>
+    <string name="add_news">Новая запись</string>
+    <string name="add_news_add">Добавить</string>
+    <string name="description_hint">Описание</string>
+    <string name="edit">дополнить</string>
+    <string name="enable_notification">Включить геолокацию для этой записи?</string>
+    <string name="hide">скрыть</string>
+    <string name="add_news_description_error">Описание не может быть пустым</string>
+    <string name="add_news_linked_title">Дополняемая запись</string>
+    <string name="add_news_loading">Загрузка. Пожалуйста, подождите&#8320;</string>
+    <string name="add_news_upload_error">Произошла ошибка при загрузке фото</string>
+    <string name="title_hint">Заголовок (не обязательно)</string>
+    <string name="view">смотреть</string>
 </resources>

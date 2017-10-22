@@ -20,12 +20,12 @@
     <string name="view">view</string>
     <string name="title_hint">Title (Optional)</string>
     <string name="description_hint">Description</string>
-    <string name="enable_notification">Enable notification for this news?</string>
+    <string name="enable_notification">Enable geolocation for this post?</string>
     <string name="add_news_add">Add</string>
     <string name="settings_title">Settings</string>
     <string name="settings_save">save</string>
     <string name="settings_logout">Logout</string>
-    <string name="add_news_linked_title">The news that you are completing</string>
+    <string name="add_news_linked_title">Edit post</string>
     <string name="add_news_description_error">Description must not be empty</string>
     <string name="add_news_upload_error">Some error occurred when uploading some photo, sorry.</string>
     <string name="add_news_loading">Loading. Please wait&#8230;</string>
@@ -35,6 +35,7 @@
     <string name="staus_rejected">rejected</string>
     <string name="pending_expl">Your post will be review soon</string>
     <string name="view_post">VIEW POST</string>
-    <string name="add_news">Add news</string>
+    <string name="add_news">New post</string>
     <string name="hide">hide</string>
+    <string name="create_post">New post</string>
 </resources>

@@ -20,7 +20,7 @@ public class PostRequest {
     private float[] mPoint;
     @SerializedName("title")
     private String mTitle;
-    @SerializedName("vk_id_reference")
+    @SerializedName("source_post")
     private int mIdReference;
 
     public float[] getPoint() {

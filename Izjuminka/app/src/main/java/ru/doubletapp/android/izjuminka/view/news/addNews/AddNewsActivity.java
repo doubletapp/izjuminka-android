@@ -77,7 +77,7 @@ public class AddNewsActivity extends BaseActivity {
         MenuItem add = menu.add(getString(R.string.add_news_add));
         add.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
         add.setOnMenuItemClickListener(item -> {
-            ((AddNewsFragment)getSupportFragmentManager().findFragmentById(mContainer.getId())).onNextClick();
+            ((AddNewsFragment) getSupportFragmentManager().findFragmentById(mContainer.getId())).onNextClick();
             return true;
         });
         return super.onCreateOptionsMenu(menu);

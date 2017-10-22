@@ -20,6 +20,7 @@ import ru.doubletapp.android.izjuminka.entities.news.News;
 import ru.doubletapp.android.izjuminka.utils.ActivityUtils;
 import ru.doubletapp.android.izjuminka.view.BaseActivity;
 import ru.doubletapp.android.izjuminka.view.MainActivity;
+import ru.yandex.speechkit.SpeechKit;
 
 /**
  * Created by Denis Akimov on 21.10.2017.
@@ -51,7 +52,7 @@ public class AddNewsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_news);
         mUnbinder = ButterKnife.bind(this);
-
+        SpeechKit.getInstance().configure(getApplicationContext(), "b1dcd943-62f3-4c94-86d8-6ee79e37325f");
         init();
     }
 

@@ -53,7 +53,7 @@ public class RatingAdapter extends RecyclerView.Adapter<RatingAdapter.RatingHold
                 .into(holder.mAvatar);
         holder.mHype.setText(user.getHype());
         holder.mPlace.setText(user.getPosition());
-        holder.mContainer.setBackgroundColor(ContextCompat.getColor(mContext, user.isYou() ? R.color.colorAccent : android.R.color.white));
+        holder.mContainer.setBackgroundColor(ContextCompat.getColor(mContext, user.isYou() ? R.color.colorPrimaryVeryLight : android.R.color.white));
     }
 
     @Override

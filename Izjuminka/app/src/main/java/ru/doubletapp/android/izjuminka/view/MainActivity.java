@@ -59,6 +59,27 @@ public class MainActivity extends BaseActivity {
             }
             return true;
         });
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case TabPagerAdapter.POSITION_NEWS:
+                        mBottomNavigation.setSelectedItemId(R.id.navigation_news);
+                        break;
+                    case TabPagerAdapter.POSITION_PROFILE:
+                        mBottomNavigation.setSelectedItemId(R.id.navigation_profile);
+                        break;
+                    case TabPagerAdapter.POSITION_RATING:
+                        mBottomNavigation.setSelectedItemId(R.id.navigation_rating);
+                        break;
+                }
+            }
+
+            @Override public void onPageScrollStateChanged(int state) { }
+        });
     }
 
     @Override

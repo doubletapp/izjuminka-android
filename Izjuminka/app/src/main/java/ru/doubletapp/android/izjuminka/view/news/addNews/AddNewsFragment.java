@@ -156,7 +156,7 @@ public class AddNewsFragment extends BaseFragment<AddNewsPresenter> {
 
     @OnClick(R.id.add_news_location)
     void onLocationClick() {
-        if (!mLocationChecker.isChecked()) {
+        /*if (!mLocationChecker.isChecked()) {
             if (ContextCompat.checkSelfPermission(getActivity(),
                     Manifest.permission.ACCESS_COARSE_LOCATION)
                     != PackageManager.PERMISSION_GRANTED &&
@@ -170,7 +170,8 @@ public class AddNewsFragment extends BaseFragment<AddNewsPresenter> {
                 requestLocation();
             }
         }
-        mLocationChecker.setChecked(false);
+        mLocationChecker.setChecked(false);*/
+        //stub!!!
     }
 
     @OnClick(R.id.add_news_speechkit)

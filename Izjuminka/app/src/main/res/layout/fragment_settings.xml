@@ -19,14 +19,14 @@
         android:layout_width="match_parent"
         android:drawableLeft="@drawable/ic_phone"
         style="@style/settings_edit_style"
-        android:background="@drawable/edittext_background"/>
+        android:backgroundTint="@color/colorPrimary"/>
 
     <EditText
         android:id="@+id/settings_email"
         android:layout_width="match_parent"
         android:drawableLeft="@drawable/ic_email"
         style="@style/settings_edit_style"
-        android:background="@drawable/edittext_background"/>
+        android:backgroundTint="@color/colorPrimary"/>
 
     <TextView
         android:id="@+id/settings_logout"

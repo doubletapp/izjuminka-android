@@ -2,6 +2,7 @@ package ru.doubletapp.android.izjuminka.view.rating;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -27,6 +28,8 @@ public class RatingFragment extends BaseFragment<RatingPresenter> {
     private RatingAdapter mAdapter;
     @BindView(R.id.rating_recycler)
     RecyclerView mRecycler;
+    @BindView(R.id.rating_refresh)
+    SwipeRefreshLayout mRefreshLayout;
 
     public static RatingFragment newInstance() {
 
@@ -59,12 +62,20 @@ public class RatingFragment extends BaseFragment<RatingPresenter> {
     }
 
     private void init() {
+        baseCallback.setTitle(getString(R.string.title_rating));
         mAdapter = new RatingAdapter(getContext());
         mRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecycler.setAdapter(mAdapter);
+        mRefreshLayout.setOnRefreshListener(() -> {
+            mPresenter.getUsers();
+        });
     }
 
     public void showRating(List<RatingUser> users) {
         mAdapter.setUsers(users);
+    }
+
+    public void setLoading(boolean loading) {
+        mRefreshLayout.setRefreshing(loading);
     }
 }

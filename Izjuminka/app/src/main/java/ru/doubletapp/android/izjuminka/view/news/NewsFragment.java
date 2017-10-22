@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -32,6 +33,8 @@ public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsAda
     private NewsAdapter mAdapter;
     @BindView(R.id.news_recycler)
     RecyclerView mRecycler;
+    @BindView(R.id.news_refresh)
+    SwipeRefreshLayout mRefresh;
     private LinearLayoutManager mLayoutManager;
     private Paginate.Callbacks mCallbacks = new Paginate.Callbacks() {
         @Override
@@ -95,6 +98,9 @@ public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsAda
                 .setLoadingTriggerThreshold(2)
                 .addLoadingListItem(true)
                 .build();
+        mRefresh.setOnRefreshListener(() -> {
+            mPresenter.refreshNews();
+        });
     }
 
     public void showNews(List<News> news) {
@@ -137,5 +143,9 @@ public class NewsFragment extends BaseFragment<NewsPresenter> implements NewsAda
                 .replace(android.R.id.content, fragment)
                 .addToBackStack(null)
                 .commit();
+    }
+
+    public void setLoading(boolean loading) {
+        mRefresh.setRefreshing(loading);
     }
 }

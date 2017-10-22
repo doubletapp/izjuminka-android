@@ -40,4 +40,5 @@
     <string name="create_post">New post</string>
     <string name="title_rating">Rating</string>
     <string name="speech_recognize">Dictate</string>
+    <string name="pick_photo">Pick photo</string>
 </resources>

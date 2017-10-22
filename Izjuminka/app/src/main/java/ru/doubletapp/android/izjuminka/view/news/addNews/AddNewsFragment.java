@@ -228,7 +228,8 @@ public class AddNewsFragment extends BaseFragment<AddNewsPresenter> {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE_SPEECH_RECOGNIZER && resultCode == RecognizerActivity.RESULT_OK) {
             String result = data.getStringExtra(RecognizerActivity.EXTRA_RESULT);
-            mDescription.setText(result);
+            String previous = mDescription.getText().toString() + " ";
+            mDescription.setText(previous + result);
         }
     }
 }

@@ -27,12 +27,15 @@ import android.widget.*;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.vansuita.pickimage.bundle.PickSetup;
-import com.vansuita.pickimage.dialog.PickImageDialog;
+
+import java.io.File;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import pl.aprilapps.easyphotopicker.DefaultCallback;
+import pl.aprilapps.easyphotopicker.EasyImage;
 import ru.doubletapp.android.izjuminka.IzjuminkaApplication;
 import ru.doubletapp.android.izjuminka.R;
 import ru.doubletapp.android.izjuminka.entities.news.News;
@@ -119,7 +122,7 @@ public class AddNewsFragment extends BaseFragment<AddNewsPresenter> {
                     Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     != PackageManager.PERMISSION_GRANTED) {
 
-                ActivityCompat.requestPermissions(getActivity(),
+                requestPermissions(
                         new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
                         PERMISSION_STORE_REQUEST_CODE);
             } else {
@@ -149,9 +152,13 @@ public class AddNewsFragment extends BaseFragment<AddNewsPresenter> {
         }
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
     private void showSelectDialog() {
-        PickImageDialog.build(new PickSetup().setSystemDialog(true))
-                .setOnPickResult(r -> mAdapter.addImage(r.getPath())).show(getChildFragmentManager());
+        EasyImage.openChooserWithGallery(this, "Pick image", 0);
     }
 
     @OnClick(R.id.add_news_location)
@@ -227,6 +234,14 @@ public class AddNewsFragment extends BaseFragment<AddNewsPresenter> {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        EasyImage.handleActivityResult(requestCode, resultCode, data, getActivity(), new DefaultCallback() {
+            @Override
+            public void onImagePicked(File imageFile, EasyImage.ImageSource source, int type) {
+                mAdapter.addImage(imageFile.getPath());
+            }
+        });
+
         if (requestCode == REQUEST_CODE_SPEECH_RECOGNIZER && resultCode == RecognizerActivity.RESULT_OK) {
             String result = data.getStringExtra(RecognizerActivity.EXTRA_RESULT);
             String previous = mDescription.getText().toString() + " ";

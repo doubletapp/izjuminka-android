@@ -38,6 +38,7 @@ public class MyPostsAdapter extends RecyclerView.Adapter<MyPostsAdapter.MyPostsV
     public static final String STATUS_PENDING = "pending";
     public static final String STATUS_REJECTED = "rejected";
     public static final String STATUS_REWARDED = "rewarded";
+    public static final String STATUS_INPROGRESS = "in_progress";
 
     @NonNull
     private List<MyPostsResponse.Results> mPosts = new ArrayList<>();
@@ -115,6 +116,7 @@ public class MyPostsAdapter extends RecyclerView.Adapter<MyPostsAdapter.MyPostsV
                     });
                     break;
                 case STATUS_PENDING:
+                case STATUS_INPROGRESS:
                     mStatusView.setTextColor(mColorPending);
                     mStatusView.setText(R.string.status_pending);
                     mBodyView.setText(R.string.pending_expl);

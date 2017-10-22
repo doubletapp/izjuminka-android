@@ -92,12 +92,12 @@ public class AddNewsActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        getSupportFragmentManager().findFragmentById(mContainer.getId())
-                .onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//        getSupportFragmentManager().findFragmentById(mContainer.getId())
+//                .onRequestPermissionsResult(requestCode, permissions, grantResults);
+//    }
 
     @Override
     public void setTitle(String title) {

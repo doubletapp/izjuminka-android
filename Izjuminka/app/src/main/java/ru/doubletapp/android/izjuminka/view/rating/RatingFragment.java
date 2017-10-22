@@ -2,9 +2,11 @@ package ru.doubletapp.android.izjuminka.view.rating;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +32,8 @@ public class RatingFragment extends BaseFragment<RatingPresenter> {
     RecyclerView mRecycler;
     @BindView(R.id.rating_refresh)
     SwipeRefreshLayout mRefreshLayout;
+    @BindView(R.id.rating_toolbar)
+    Toolbar mToolbar;
 
     public static RatingFragment newInstance() {
 
@@ -62,7 +66,8 @@ public class RatingFragment extends BaseFragment<RatingPresenter> {
     }
 
     private void init() {
-        baseCallback.setTitle(getString(R.string.title_rating));
+        mToolbar.setTitle(getString(R.string.title_rating));
+        mToolbar.setTitleTextColor(ContextCompat.getColor(getContext(), android.R.color.white));
         mAdapter = new RatingAdapter(getContext());
         mRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecycler.setAdapter(mAdapter);

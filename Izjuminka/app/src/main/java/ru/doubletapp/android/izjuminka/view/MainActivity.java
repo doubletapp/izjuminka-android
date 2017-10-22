@@ -18,6 +18,7 @@ import ru.doubletapp.android.izjuminka.entities.news.News;
 import ru.doubletapp.android.izjuminka.view.news.NewsFragment;
 import ru.doubletapp.android.izjuminka.view.news.addNews.AddNewsActivity;
 import ru.doubletapp.android.izjuminka.view.profile.ProfileFragment;
+import ru.doubletapp.android.izjuminka.view.rating.RatingFragment;
 
 public class MainActivity extends BaseActivity {
 
@@ -85,6 +86,8 @@ public class MainActivity extends BaseActivity {
                     return ProfileFragment.newInstance();
                 case POSITION_NEWS:
                     return NewsFragment.newInstance();
+                case POSITION_RATING:
+                    return RatingFragment.newInstance();
                 default:
                     return new Fragment();
             }

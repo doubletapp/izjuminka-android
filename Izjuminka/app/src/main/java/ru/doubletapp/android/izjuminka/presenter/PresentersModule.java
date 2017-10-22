@@ -6,12 +6,14 @@ import dagger.Module;
 import dagger.Provides;
 import ru.doubletapp.android.izjuminka.api.profile.ProfileInteractor;
 import ru.doubletapp.android.izjuminka.api.news.NewsInteractor;
+import ru.doubletapp.android.izjuminka.api.rating.RatingInteractor;
 import ru.doubletapp.android.izjuminka.api.settings.EditInteractor;
 import ru.doubletapp.android.izjuminka.presenter.login.LoginInfoPresenter;
 import ru.doubletapp.android.izjuminka.presenter.login.LoginPresenter;
 import ru.doubletapp.android.izjuminka.presenter.news.AddNewsPresenter;
 import ru.doubletapp.android.izjuminka.presenter.news.NewsPresenter;
 import ru.doubletapp.android.izjuminka.presenter.profile.ProfilePresenter;
+import ru.doubletapp.android.izjuminka.presenter.rating.RatingPresenter;
 import ru.doubletapp.android.izjuminka.storage.AuthLocalData;
 
 /**
@@ -55,5 +57,11 @@ public class PresentersModule {
     @Provides
     AddNewsPresenter provideAddNewsPresenter(@NonNull NewsInteractor newsInteractor) {
         return new AddNewsPresenter(newsInteractor);
+    }
+
+    @NonNull
+    @Provides
+    RatingPresenter providesRatingPresenter(@NonNull RatingInteractor ratingInteractor) {
+        return new RatingPresenter(ratingInteractor);
     }
 }

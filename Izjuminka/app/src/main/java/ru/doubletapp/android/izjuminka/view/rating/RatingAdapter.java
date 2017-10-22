@@ -1,6 +1,8 @@
 package ru.doubletapp.android.izjuminka.view.rating;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,7 +53,7 @@ public class RatingAdapter extends RecyclerView.Adapter<RatingAdapter.RatingHold
                 .into(holder.mAvatar);
         holder.mHype.setText(user.getHype());
         holder.mPlace.setText(user.getPosition());
-
+        holder.mContainer.setBackgroundColor(ContextCompat.getColor(mContext, user.isYou() ? R.color.colorAccent : android.R.color.white));
     }
 
     @Override
@@ -76,6 +78,8 @@ public class RatingAdapter extends RecyclerView.Adapter<RatingAdapter.RatingHold
         TextView mPlace;
         @BindView(R.id.rating_avatar)
         ImageView mAvatar;
+        @BindView(R.id.rating_container)
+        CardView mContainer;
 
         public RatingHolder(View itemView) {
             super(itemView);

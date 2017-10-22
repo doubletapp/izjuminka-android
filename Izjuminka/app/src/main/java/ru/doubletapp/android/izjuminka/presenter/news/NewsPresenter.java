@@ -3,7 +3,6 @@ package ru.doubletapp.android.izjuminka.presenter.news;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,13 +49,17 @@ public class NewsPresenter extends BasePresenter<NewsFragment> {
                     for (News news : newsList)
                         if (!mNewsList.contains(news)) mNewsList.add(news);
                     mView.showNews(mNewsList);
+                    mView.setLoading(false);
                 }
                 mIsLoading = false;
             }
 
             @Override
             public void onErrorReceived(Throwable t) {
-                if (mView != null) mView.showError(t.getLocalizedMessage());
+                if (mView != null) {
+                    mView.showError(t.getLocalizedMessage());
+                    mView.setLoading(false);
+                }
                 mIsLoading = false;
             }
         });
@@ -64,5 +67,12 @@ public class NewsPresenter extends BasePresenter<NewsFragment> {
 
     public boolean isLoading() {
         return mIsLoading;
+    }
+
+    public void refreshNews() {
+        mPrevStart = 0;
+        mNewsList.clear();
+        if (mView != null) mView.setLoading(true);
+        getNews();
     }
 }

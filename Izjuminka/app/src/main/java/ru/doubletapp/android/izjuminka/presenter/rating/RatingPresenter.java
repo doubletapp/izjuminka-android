@@ -29,15 +29,26 @@ public class RatingPresenter extends BasePresenter<RatingFragment> {
     @Override
     public void attachView(@NonNull RatingFragment view, @Nullable Bundle savedState) {
         super.attachView(view, savedState);
+        getUsers();
+    }
+
+    public void getUsers() {
+        if (mView != null) mView.setLoading(true);
         mRatingIterator.getRating(new RatingInteractor.RatingCallback() {
             @Override
             public void ratingReceived(List<RatingUser> users) {
-                if (mView != null) mView.showRating(users);
+                if (mView != null) {
+                    mView.showRating(users);
+                    mView.setLoading(false);
+                }
             }
 
             @Override
             public void errorOccurred(Throwable t) {
-                if (mView != null) mView.showError(t.getLocalizedMessage());
+                if (mView != null) {
+                    mView.showError(t.getLocalizedMessage());
+                    mView.setLoading(false);
+                }
             }
         });
     }

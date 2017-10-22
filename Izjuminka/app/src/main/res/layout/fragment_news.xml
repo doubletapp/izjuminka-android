@@ -8,23 +8,29 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary">
+
         <TextView
             android:id="@+id/news_add_news"
             android:layout_width="wrap_content"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorPrimary"
-            android:drawableStart="@drawable/ic_add_news"
             android:drawablePadding="16dp"
+            android:drawableStart="@drawable/ic_add_news"
             android:gravity="center"
             android:text="@string/add_news"
             android:textAllCaps="true"
             android:textColor="@android:color/white"/>
     </android.support.v7.widget.Toolbar>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/news_recycler"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/news_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/spacing_8"/>
+        android:layout_height="match_parent">
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/news_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/spacing_8"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>

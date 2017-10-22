@@ -19,7 +19,7 @@
     <string name="settings_title">Настройки</string>
     <string name="settings_save">сохранить</string>
     <string name="settings_logout">Выйти из аккаунта</string>
-    <string name="pending_expl">Ваш новость будет рассмотрена в ближайшее время</string>
+    <string name="pending_expl">Ваша новость будет рассмотрена в ближайшее время</string>
     <string name="status_acceped">одобрено</string>
     <string name="staus_rejected">отклонено</string>
     <string name="status_pending">на рассмотрении</string>
@@ -40,4 +40,5 @@
     <string name="view">смотреть</string>
     <string name="title_rating">Рейтинг</string>
     <string name="speech_recognize">Продиктовать</string>
+    <string name="pick_photo">Выберите фото</string>
 </resources>

@@ -158,7 +158,7 @@ public class AddNewsFragment extends BaseFragment<AddNewsPresenter> {
     }
 
     private void showSelectDialog() {
-        EasyImage.openChooserWithGallery(this, "Pick image", 0);
+        EasyImage.openChooserWithGallery(this, getString(R.string.pick_photo), 0);
     }
 
     @OnClick(R.id.add_news_location)

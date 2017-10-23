@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/add_news_link_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:text="@string/add_news_linked_title"/>
+
+            <include
+                android:id="@+id/add_news_link_news"
+                layout="@layout/include_news_collapsed"/>
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/add_news_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/title_hint"
+            android:backgroundTint="@color/colorPrimary"
+            android:maxLines="2"/>
+
+        <EditText
+            android:id="@+id/add_news_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_18"
+            android:background="@drawable/edittext_background"
+            android:gravity="top"
+            android:hint="@string/description_hint"
+            android:minHeight="128dp"
+            android:padding="@dimen/spacing_8"/>
+
+        <Button
+            android:id="@+id/add_news_speechkit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/speech_recognize"
+            android:gravity="left|center_vertical"
+            android:drawablePadding="8dp"
+            android:drawableLeft="@drawable/ic_microphone"
+            android:background="@drawable/white_button_background"
+            android:padding="4dp"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/add_news_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_18"/>
+
+        <CheckBox
+            android:id="@+id/add_news_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_18"
+            android:layout_marginStart="@dimen/spacing_18"
+            android:layout_marginTop="@dimen/spacing_18"
+            android:button="@null"
+            android:drawableEnd="@drawable/checkbox_location_drawable"
+            android:text="@string/enable_notification"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:id="@+id/add_news_location_place"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_18"
+            android:layout_marginStart="@dimen/spacing_18"
+            tools:text="Ekaterinburg"
+            />
+    </LinearLayout>
+</ScrollView>

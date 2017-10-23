@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#8d2c62</color>
+    <color name="colorPrimaryDark">#5A002F</color>
+    <color name="colorAccent">#ecedef</color>
+    <color name="colorSemiBlack">#8F000000</color>
+    <color name="colorBlack50">#7f000000</color>
+    <color name="colorPrimaryLight">#C05F95</color>
+    <color name="colorPrimaryVeryLight">#33C05F95</color>
+    <color name="statusAccepted">#07aa85</color>
+    <color name="statusRejected">#ff6262</color>
+    <color name="statusPending">#4990E2</color>
+    <color name="statusRewarded">#f6a623</color>
 </resources>

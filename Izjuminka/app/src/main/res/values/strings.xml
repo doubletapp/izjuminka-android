@@ -1,3 +1,44 @@
 <resources>
-    <string name="app_name">Izjuminka</string>
+    <string name="app_name" translatable="true">Izjuminka</string>
+    <integer name="com_vk_sdk_AppId">6227710</integer>
+    <string name="nav_news_title" translatable="true">News</string>
+    <string name="nav_profile_title" translatable="true">Profile</string>
+    <string name="nav_rating_title" translatable="true">Rating</string>
+    <string name="login_vk_text">Login with VK</string>
+    <string name="or">or</string>
+    <string name="login_anonim_text">Post anonymously</string>
+    <string name="login_title">Login</string>
+    <string name="next">Next</string>
+    <string name="email_hint">Enter your email</string>
+    <string name="phone_hint">Enter your phone</string>
+    <string name="login_info_text">Please enter your email and phone number so we can contact you. You can skip this step.</string>
+    <string name="send_email_btn_text">Send info to us</string>
+    <string name="skip">Skip</string>
+    <string name="info_empty_fields">Email and phone must not be empty</string>
+    <string name="info_invalid_phone">Phone is not valid</string>
+    <string name="edit">edit</string>
+    <string name="view">view</string>
+    <string name="title_hint">Title (Optional)</string>
+    <string name="description_hint">Description</string>
+    <string name="enable_notification">Enable geolocation for this post?</string>
+    <string name="add_news_add">Add</string>
+    <string name="settings_title">Settings</string>
+    <string name="settings_save">save</string>
+    <string name="settings_logout">Logout</string>
+    <string name="add_news_linked_title">Edit post</string>
+    <string name="add_news_description_error">Description must not be empty</string>
+    <string name="add_news_upload_error">Some error occurred when uploading some photo, sorry.</string>
+    <string name="add_news_loading">Loading. Please wait&#8230;</string>
+    <string name="status_acceped">accepted</string>
+    <string name="status_pending">pending</string>
+    <string name="status_rewarded">rewarded</string>
+    <string name="staus_rejected">rejected</string>
+    <string name="pending_expl">Your post will be review soon</string>
+    <string name="view_post">VIEW POST</string>
+    <string name="add_news">New post</string>
+    <string name="hide">hide</string>
+    <string name="create_post">New post</string>
+    <string name="title_rating">Rating</string>
+    <string name="speech_recognize">Dictate</string>
+    <string name="pick_photo">Pick photo</string>
 </resources>

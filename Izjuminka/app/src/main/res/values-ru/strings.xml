@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nav_news_title">Новости</string>
+    <string name="nav_profile_title">Профиль</string>
+    <string name="nav_rating_title">Рейтинг</string>
+    <string name="login_vk_text">Войти через ВКонтакте</string>
+    <string name="or">или</string>
+    <string name="login_anonim_text">Сообщить новость анонимно</string>
+    <string name="next">Далее</string>
+    <string name="login_title">Вход</string>
+    <string name="phone_hint">Введите Ваш телефон</string>
+    <string name="email_hint">Введите Ваш email</string>
+    <string name="login_info_text">Пожалуйста, введите Ваш email и телефон, чтоб мы могли связаться с вами. Вы можете пропустить этот шаг.</string>
+    <string name="send_email_btn_text">Отправить информацию</string>
+    <string name="skip">Пропустить</string>
+    <string name="info_empty_fields">Поля email и телефон не должны быть пустыми.</string>
+    <string name="app_name">Изюминка</string>
+    <string name="info_invalid_phone">Введен неверный телефон</string>
+    <string name="settings_title">Настройки</string>
+    <string name="settings_save">сохранить</string>
+    <string name="settings_logout">Выйти из аккаунта</string>
+    <string name="pending_expl">Ваша новость будет рассмотрена в ближайшее время</string>
+    <string name="status_acceped">одобрено</string>
+    <string name="staus_rejected">отклонено</string>
+    <string name="status_pending">на рассмотрении</string>
+    <string name="status_rewarded">оплачено</string>
+    <string name="view_post">ПОСМОТРЕТЬ ПОСТ</string>
+    <string name="create_post">Новая запись</string>
+    <string name="add_news">Новая запись</string>
+    <string name="add_news_add">Добавить</string>
+    <string name="description_hint">Описание</string>
+    <string name="edit">дополнить</string>
+    <string name="enable_notification">Включить геолокацию для этой записи?</string>
+    <string name="hide">скрыть</string>
+    <string name="add_news_description_error">Описание не может быть пустым</string>
+    <string name="add_news_linked_title">Дополняемая запись</string>
+    <string name="add_news_loading">Загрузка. Пожалуйста, подождите&#8320;</string>
+    <string name="add_news_upload_error">Произошла ошибка при загрузке фото</string>
+    <string name="title_hint">Заголовок (не обязательно)</string>
+    <string name="view">смотреть</string>
+    <string name="title_rating">Рейтинг</string>
+    <string name="speech_recognize">Продиктовать</string>
+    <string name="pick_photo">Выберите фото</string>
+</resources>
